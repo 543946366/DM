@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.imotom.dm.ui.HuoQuWIFIMiMaActivity"
+    tools:showIn="@layout/activity_huo_qu_wifimi_ma">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:layout_weight="1"
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#d2d2d2"
+            >
+        <TextView
+            android:text="@string/imotom_pwd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_WIFI_miMa"
+            android:textSize="50sp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textColor="@android:color/black"
+            android:layout_margin="1dp"
+            android:background="@android:color/background_light"
+            />
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:text="@string/get"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_fuZhi_huoQuWIFIMiMa"
+        android:background="@color/mBlue"
+        android:textColor="@color/mFontWhite"
+        android:textSize="24sp"
+        android:layout_margin="20dp"/>
+</LinearLayout>

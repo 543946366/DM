@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_quXiaoDengLu"
+            android:icon="@android:drawable/ic_delete"
+            android:title="@string/cancel_automatic_login" />
+
+        <item
+            android:id="@+id/nav_ruJianBanBen"
+            android:icon="@android:drawable/ic_dialog_info"
+            android:title="@string/software_version" />
+    </group>
+
+    <!--<item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Share" />
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Send" />
+        </menu>
+    </item>-->
+
+</menu>

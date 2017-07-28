@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.imotom.dm.ui.GuanLiActivity"
+    >
+<!--tools:showIn="@layout/activity_guan_li"-->
+
+    <Button
+        android:id="@+id/btn_carDev_guanLi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:background="@color/mBlue"
+        android:text="@string/navigation"
+        android:textColor="@color/mFontWhite"
+        android:textSize="24sp"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/btn_GKDVRAPP_guanLi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:background="@color/mBlue"
+        android:text="@string/GKDVR"
+        android:textColor="@color/mFontWhite"
+        android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/btn_guJianShengJi_guanLi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/mBlue"
+        android:text="@string/check_device_version"
+        android:textColor="@color/mFontWhite"
+        android:textSize="24sp"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/btn_huoQuWIFIMiMa_guanLi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:background="@color/mBlue"
+        android:text="@string/get_wifi_password"
+        android:textColor="@color/mFontWhite"
+        android:textSize="24sp"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/btn_xiuGaiWIFIMiMa_guanLi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:background="@color/mBlue"
+        android:text="@string/change_wifi_password"
+        android:textColor="@color/mFontWhite"
+        android:textSize="24sp"
+        android:visibility="gone" />
+</LinearLayout>

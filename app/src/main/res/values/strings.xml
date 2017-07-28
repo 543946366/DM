@@ -1,0 +1,78 @@
+<resources>
+    <string name="app_name">管理APP用户版</string>
+    <string name="software_version">软件版本:v1.0.2</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_search">搜索设备</string>
+    <string name="title_activity_deng_lu">设备登录</string>
+    <string name="title_activity_guan_li">管理</string>
+    <string name="title_activity_dao_hang_di_zhi_tui_song_appdownload">
+        Navigation下载
+    </string>
+    <string name="title_activity_li_xian_gu_jian_download">固件下载</string>
+    <string name="title_activity_sheng_ji">固件升级</string>
+    <string name="title_activity_huo_qu_wifimi_ma">当前WIFI密码</string>
+    <string name="title_activity_xiu_gai_mi_ma">修改WIFI密码</string>
+    <string name="title_activity_down_app">GKDVR下载</string>
+    <string name="title_activity_huo_qu">当前WIFI密码</string>
+    <string name="title_activity_splash">加载首页</string>
+    <string name="title_activity_main">设备管理</string>
+
+    <string name="download">下载</string>
+    <string name="file_exists">该文件已下载</string>
+    <string name="download_started">开始下载：</string>
+    <string name="download_ongoing">正在下载：</string>
+    <string name="download_finished">下载完成</string>
+    <string name="download_failed">下载失败</string>
+    <string name="file_downloading">当前文件正在下载中</string>
+
+    <string name="gkdvrapp_introduction">"\u3000\u3000"该APP配合指定WIFI行车记录仪使用，用做手机端预览、控制、在线回放等，支持微信、微博图片分享，一键拍照、精彩视频，需要搭配相应行车记录仪硬件使用。一路陪伴，记录您旅途上的风景。</string>
+    <string name="navigationapp_introduction">"\u3000\u3000"NavigationAPP主要运用于手机端搜索地址及查询导航路线，并向车机设备推送导航路线。</string>
+
+    <string name="navigation">Navigation</string>
+    <string name="nothing">nothing</string>
+    <string name="please_enter_the_username">请输入账号</string>
+    <string name="please_enter_the_password">请输入密码</string>
+    <string name="remember_login">记住登录</string>
+    <string name="go_back">返回</string>
+    <string name="login">登录</string>
+    <string name="cancel">取消</string>
+    <string name="GKDVR">GKDVR</string>
+    <string name="login_error_text">账号或者密码错误，请重新输入</string>
+    <string name="check_device_version">查看设备版本</string>
+    <string name="get_wifi_password">获取WIFI密码</string>
+    <string name="change_wifi_password">修改设备WIFI密码</string>
+    <string name="imotom_pwd">imotom_pwd</string>
+    <string name="get">获取</string>
+    <string name="current_version">当前版本：</string>
+    <string name="detect_the_new_version">检测新版本中…</string>
+    <string name="download_the_firmware">下载固件</string>
+    <string name="upgrade">升级</string>
+    <string name="set_the_new_password">设置新密码</string>
+    <string name="confirm_the_new_password">确认新密码</string>
+    <string name="confirm">确  认</string>
+    <string name="username">用户名</string>
+    <string name="setting">设置</string>
+    <string name="cancel_automatic_login">取消自动登录</string>
+    <string name="title_activity_car_dev_upgrade">车机固件升级</string>
+    <string name="dan_pian_ji_upgrade">单片机升级</string>
+    <string name="system_upgrade">系统文件升级</string>
+    <string name="nei_he_upgrade">内核升级</string>
+    <string name="title_activity_tian_xie_zhu_ban_xin_xi">主板信息</string>
+    <string name="serial_number">序列号</string>
+    <string name="ying_jian_ban_ben">硬件版本</string>
+    <string name="ruan_jian_ban_ben">软件版本</string>
+    <string name="mac">Mac</string>
+    <string name="title_activity_li_xian_che_ji_gu_jian_download">
+        LiXianCheJiGuJianDownloadActivity
+    </string>
+    <string name="title_activity_off_line_list">离线功能列表</string>
+    <string name="download_GUOKE_APP">下载国科APP</string>
+    <string name="download_DAOHANG_APP">下载导航推送APP</string>
+    <string name="title_activity_off_line_check_dev_version">OffLineCheckDevVersionActivity</string>
+    <string name="dev_server">设备服务</string>
+    <string name="dev_zhiChiDeAPP">设备支持的APP</string>
+
+</resources>

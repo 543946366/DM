@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.imotom.dm.ui.XiuGaiMiMaActivity"
+    tools:showIn="@layout/activity_xiu_gai_mi_ma"
+    android:gravity="center"
+    android:padding="20dp"
+    >
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/set_the_new_password"
+                android:textColor="@color/mFontBlack"
+                android:textSize="30sp" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:background="#d2d2d2"
+                >
+
+                <EditText
+                    android:id="@+id/et_newPassword_XiuGaiMiMa"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="1dp"
+                    android:background="@android:color/background_light"
+                    android:ems="9"
+                    android:inputType="textPassword" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp">
+
+            <TextView
+                android:text="@string/confirm_the_new_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView2"
+                android:textSize="30sp"
+                android:textColor="@color/mFontBlack" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:background="#d2d2d2"
+
+                >
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textPassword"
+                android:ems="9"
+                android:id="@+id/et_again_XiuGaiMiMa"
+                android:background="@android:color/background_light"
+                android:layout_margin="1dp"
+                />
+                </LinearLayout>
+
+        </LinearLayout>
+
+        <Button
+            android:text="@string/confirm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_ok_xiuGaiMiMa"
+            android:background="@color/mBlue"
+            android:textColor="@color/mFontWhite"
+            android:textSize="24sp"
+            android:layout_margin="20dp" />
+</LinearLayout>
