@@ -36,32 +36,7 @@ public class XiuGaiMiMaActivity extends AppCompatActivity implements Consts {
     private String miMa_text;
     private String myBaseUrl;
 
-    /*public static final int OK_TEXT = 1;
-    public static final int NO_TEXT = 2;*/
     private Handler handler = new MyHandler(this);
-            /*new Handler() {
-        public void handleMessage(Message msg) {
-            switch (msg.what) {
-                case OK_TEXT:
-// 在这里可以进行UI操作
-                    L.d("4444444444");
-                    //本地保存WIFI密码
-                    if (SPUtils.contains(XiuGaiMiMaActivity.this, "WIFI密码")) {
-                        SPUtils.remove(XiuGaiMiMaActivity.this, "WIFI密码");
-                    }
-                    SPUtils.put(XiuGaiMiMaActivity.this, "WIFI密码", miMa_text);
-                    finish();
-                    T.showLong(XiuGaiMiMaActivity.this, "修改成功！请使用新密码登录WIFI！");
-                    break;
-
-                case NO_TEXT:
-                    T.showShort(XiuGaiMiMaActivity.this, "修改失败！请重试！");
-                    break;
-                default:
-                    break;
-            }
-        }
-    };*/
 
     private static class MyHandler extends Handler {
 
@@ -130,8 +105,14 @@ public class XiuGaiMiMaActivity extends AppCompatActivity implements Consts {
                 et_newPassword_XiuGaiMiMa.setText("");
                 et_again_XiuGaiMiMa.setText("");
             } else if (et_newPassword_XiuGaiMiMa.getText().toString().equals(et_again_XiuGaiMiMa.getText().toString())) {
-                miMa_text = et_again_XiuGaiMiMa.getText().toString();
-                showMyDialog();
+                // wifi密码限制长度至少8位数以上
+                if(et_again_XiuGaiMiMa.getText().toString().length() >= 8){
+                    miMa_text = et_again_XiuGaiMiMa.getText().toString();
+                    showMyDialog();
+                }else{
+                    Toast.makeText(this, "新密码少于8位数，请重新设置！", Toast.LENGTH_LONG).show();
+                }
+
             } else {
                 Toast.makeText(this, "两次密码输入不一样，请重新输入！", Toast.LENGTH_SHORT).show();
                 et_newPassword_XiuGaiMiMa.setText("");
@@ -164,117 +145,6 @@ public class XiuGaiMiMaActivity extends AppCompatActivity implements Consts {
     private void changeWIFIPassword() {
         //"http://192.168.63.9:8199/wifi_pwd_update"
         DigestAuthenticationUtil.startDigestPost(myBaseUrl+"wifi_pwd_update",handler,"/wifi_pwd_update","admin","admin","wifi_password",miMa_text);
-        /*new Thread(() -> {
-
-            try {
-
-                //创建okHttpClient对象
-//创建一个Request
-                //"http://192.168.63.9:8199/wifi_pwd_update"
-                Response response = OkHttpUtils
-                        .post()
-                        .addParams("wifi_password", miMa_text)
-                        .url(myBaseUrl+"wifi_pwd_update")
-                        .build()
-                        .execute();
-                //if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
-                if (response.code() == 401) {
-                    L.d("6");
-
-                    L.d("下面开始666WWW-Authenticate:" + response.header("WWW-Authenticate"));
-                    Headers responseHeaders = response.headers();
-                    for (int i = 0; i < responseHeaders.size(); i++) {
-                        L.d(responseHeaders.name(i) + ": " + responseHeaders.value(i));
-                    }
-
-                    Map<String, String> maps = getMapByKeyArray(response.header("WWW-Authenticate").split(","));
-
-                    maps.put("username", "admin");
-                    maps.put("nc", "00000002");
-                    maps.put("cnonce", "6d9a4895d16b3021");
-                    maps.put("uri", "/wifi_pwd_update");
-                    *//*
-                     * POST请求要HA2 要修改为 HA2 = MD5Object.encrypt("POST:" + "/get_version");
-                     *//*
-                    maps.put("response", getPOSTResponse(maps));
-
-                    // 开始拼凑Authorization 头信息
-                    StringBuilder authorizationHaderValue = new StringBuilder();
-                    //StringBuffer authorizationHaderValue = new StringBuffer();
-                    authorizationHaderValue
-                            .append("Digest username=\"")
-                            .append(maps.get("username"))
-                            .append("\", ")
-                            .append("realm=\"")
-                            .append(maps.get("realm"))
-                            .append("\", ")
-                            // .append("nonce=\"").append(maps.get("nonceTime")).append(maps.get("nonce")).append("\", ")
-                            .append("nonce=\"").append(maps.get("nonce"))
-                            .append("\", ").append("uri=\"").append(maps.get("uri"))
-                            .append("\", ").append("algorithm=").append("MD5")
-                            .append(", ").append("response=\"")
-                            .append(maps.get("response")).append("\", ")
-                            .append("opaque=\"").append(maps.get("opaque"))
-                            .append("\", ").append("qop=").append(maps.get("qop"))
-                            .append(", ").append("nc=").append(maps.get("nc"))
-                            .append(", ").append("cnonce=\"")
-                            .append(maps.get("cnonce")).append("\"");
-
-                    System.out.println(authorizationHaderValue.toString());
-
-//创建一个Request
-                        *//*RequestBody bodyd = RequestBody.create(JSON, "Hello World");
-                        request = new Request.Builder()
-                                .url("http://192.168.63.9:8199/get_version")
-                                .post(bodyd)
-                                .addHeader("Authorization",
-                                        authorizationHaderValue.toString())
-                                .build();
-                        response = mOkHttpClient.newCall(request).execute();*//*
-
-                    //"http://192.168.63.9:8199/wifi_pwd_update"
-                    OkHttpUtils
-                            .post()
-                            .url(myBaseUrl+"wifi_pwd_update")
-                            .addHeader("Authorization",
-                                    authorizationHaderValue.toString())
-                            .addParams("wifi_password", miMa_text)
-                            .build()
-                            .execute(new StringCallback() {
-                                @Override
-                                public void onError(Call call, Exception e, int id) {
-                                    L.d("失败：" + e.getMessage());
-                                    Message message = new Message();
-                                    message.what = NO_TEXT;
-                                    handler.sendMessage(message); // 将Message对象发送出去
-                                }
-
-                                @Override
-                                public void onResponse(String response, int id) {
-                                    L.d("成功:" + response);
-                                    Message message = new Message();
-                                    message.what = OK_TEXT;
-                                    handler.sendMessage(message); // 将Message对象发送出去
-                                }
-                            });
-                    // 打印响应码
-                    System.out.println(response.code());
-
-
-                    Headers responseHeadersqq = response.headers();
-                    for (int i = 0; i < responseHeadersqq.size(); i++) {
-                        L.d(responseHeadersqq.name(i) + ": " + responseHeadersqq.value(i));
-                    }
-                    // 打印响应的信息
-                    System.out.println(response.body());
-
-                }
-
-            } catch (Exception e) {
-                e.printStackTrace();
-
-            }
-        }).start();*/
 
     }
 

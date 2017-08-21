@@ -38,13 +38,14 @@ import com.imotom.dm.ui.DengLuActivity;
 import com.imotom.dm.ui.GuanLiActivity;
 import com.imotom.dm.utils.DigestAuthenticationUtil;
 import com.imotom.dm.utils.PasswordHelp;
+import com.orhanobut.logger.Logger;
 import com.squareup.picasso.Picasso;
-import com.zhy.http.okhttp.utils.L;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -136,36 +137,19 @@ public class UPnPDeviceAdapter extends RecyclerView.Adapter<UPnPDeviceAdapter.Vi
 
                 Log.d("TAG", upnpDev.getRawXml() + "-----------------" + upnpDev.getServer());
 
-                showDeviceXinxiDialog(upnpDev);
+                //TODO
+                //showDeviceXinxiDialog(upnpDev);
+                if(viewHolder.tv_item_upnp_device_devInfo.getVisibility() == View.GONE) {
+                    viewHolder.tv_item_upnp_device_devInfo.setVisibility(View.VISIBLE);
+                }else {
+                    viewHolder.tv_item_upnp_device_devInfo.setVisibility(View.GONE);
+                }
             });
         }
-        /*viewHolder.ll_upnp_dev_item.setOnClickListener(new View.OnClickListener() {
-            @Override
-			public void onClick(View v) {
-				int position = viewHolder.getAdapterPosition();
-				if (mListener != null) {
-					mListener.onClick(mItems.get(position), position);
-					notifyItemChanged(position);
-				}
-				UPnPDevice upnpDev = mItems.get(position);
 
-				myURL = upnpDev.getPresentationURL();
-				//myURL = "http://192.168.63.9:8099";
-					//	"" + dd.getDevice().getDetails().getPresentationURI();
-				displayFriendlyName = upnpDev.getFriendlyName();
-						//"" + dd.getDevice().getDetails().getFriendlyName();
-				displaySerialNumber = upnpDev.getSerialNumber();
-
-						//dd.getDevice().getDetails().getSerialNumber();
-				L.e(upnpDev.getLocation().getAuthority()+"----------"+upnpDev.getLocation().getHost()+"--------"+upnpDev.getLocation().getPath()+""+upnpDev.getRawUPnP());
-				Log.d("TAG",upnpDev.getRawXml()+"-----------------"+upnpDev.getServer());
-				Toast.makeText(v.getContext(),myURL,Toast.LENGTH_LONG).show();
-				//Toast.makeText(v.getContext(),myURL+"----"+upnpDev.getSerialNumber()+"---"+upnpDev.getRawXml(),Toast.LENGTH_SHORT).show();
-
-				dianJiGuanLi();
-			}
-		});*/
-
+        if(viewHolder.tv_item_upnp_device_guanLi != null){
+            viewHolder.tv_item_upnp_device_guanLi.setOnClickListener(v -> dianJiGuanLi());
+        }
         return viewHolder;
     }
 
@@ -209,6 +193,13 @@ public class UPnPDeviceAdapter extends RecyclerView.Adapter<UPnPDeviceAdapter.Vi
 
         }
 
+        if(holder.tv_item_upnp_device_devInfo != null){
+            if(item.getMyDetailsMsg() == null || item.getMyDetailsMsg().isEmpty()){
+                holder.tv_item_upnp_device_devInfo.setText("获取设备信息失败，请刷新！");
+            }else {
+                holder.tv_item_upnp_device_devInfo.setText(item.getMyDetailsMsg());
+            }
+        }
         //读取upnp设备图标
 		/*if (holder.icon != null) {
 			if (!TextUtils.isEmpty(item.getIconUrl())) {
@@ -260,22 +251,21 @@ public class UPnPDeviceAdapter extends RecyclerView.Adapter<UPnPDeviceAdapter.Vi
         @Nullable
         LinearLayout ll_upnp_dev_item;
 
+        @Nullable
+        TextView tv_item_upnp_device_guanLi;
+
+        @BindView(R.id.tv_item_upnp_device_devInfo)
+        TextView tv_item_upnp_device_devInfo;
+
         ViewHolder(View view) {
             super(view);
             ButterKnife.bind(this, view);
             icon = (ImageView) view.findViewById(R.id.icon);
             friendlyName = (TextView) view.findViewById(R.id.friendly_name);
             ll_upnp_dev_item = (LinearLayout) view.findViewById(R.id.ll_upnp_dev_item);
+            tv_item_upnp_device_guanLi = (TextView) view.findViewById(R.id.tv_item_upnp_device_guanLi);
         }
 
-        /*@OnClick(R.id.root)
-        void click(View view) {
-            int position = getAdapterPosition();
-            if (mListener != null) {
-                mListener.onClick(mItems.get(position), position);
-                notifyItemChanged(position);
-            }
-        }*/
     }
 
     /**
@@ -315,44 +305,12 @@ public class UPnPDeviceAdapter extends RecyclerView.Adapter<UPnPDeviceAdapter.Vi
                         .build();
                 Response response = myOkHttpClient.newCall(request).execute();
                 //if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
-                L.e("311:" + response.code() + "------------" + response.message());
+                Logger.e("311:" + response.code() + "------------" + response.message());
                 if (response.code() == 401) {
-                    L.e("header:" + response.header("WWW-Authenticate"));
+                    Logger.e("header:" + response.header("WWW-Authenticate"));
                     String authorizationHaderValue = DigestAuthenticationUtil.startDigestGet(response.header("WWW-Authenticate"), myUerName, myPassword, "/");
 
-					/*Map<String, String> maps = getMapByKeyArray(response.header("WWW-Authenticate").split(","));
-
-					maps.put("username", myUerName);
-					maps.put("password", myPassword);
-					maps.put("nc", "00000002");
-					maps.put("cnonce", "6d9a4895d16b3021");
-					maps.put("uri", "/");
-					maps.put("response", getResponse(maps));
-
-					// 开始拼凑Authorization 头信息
-					//旧的StringBuffer，java8 提示更换为StringBuilder（待测试看有无效）
-					// StringBuffer authorizationHaderValue = new StringBuffer();
-					StringBuilder authorizationHaderValue = new StringBuilder();
-					authorizationHaderValue
-							.append("Digest username=\"")
-							.append(maps.get("username"))
-							.append("\", ")
-							.append("realm=\"")
-							.append(maps.get("realm"))
-							.append("\", ")
-							// .append("nonce=\"").append(maps.get("nonceTime")).append(maps.get("nonce")).append("\", ")
-							.append("nonce=\"").append(maps.get("nonce"))
-							.append("\", ").append("uri=\"").append(maps.get("uri"))
-							.append("\", ").append("algorithm=").append("MD5")
-							.append(", ").append("response=\"")
-							.append(maps.get("response")).append("\", ")
-							.append("opaque=\"").append(maps.get("opaque"))
-							.append("\", ").append("qop=").append(maps.get("qop"))
-							.append(", ").append("nc=").append(maps.get("nc"))
-							.append(", ").append("cnonce=\"")
-							.append(maps.get("cnonce")).append("\"");*/
-
-                    L.e("value:" + authorizationHaderValue);
+                    Logger.e("value:" + authorizationHaderValue);
 
                     myOkHttpClient = new OkHttpClient();
 //创建一个Request
@@ -386,12 +344,12 @@ public class UPnPDeviceAdapter extends RecyclerView.Adapter<UPnPDeviceAdapter.Vi
                     }
                     myContext.startActivity(intent);
                     // 打印响应的信息
-                    L.e(response.body().toString());
+                    Logger.e(response.body().toString());
 
                 } else if (response.code() == 200) {
                     //如果上次升级时，没重启成功，则会返回200，并会显示要求重启界面，此时应该执行重启操作
-                    L.e(response.body().string());
-                    L.e(url);
+                    Logger.e(response.body().string());
+                    Logger.e(url);
                     Message message = new Message();
                     message.what = CHONG_QI_TEXT;
                     message.obj = url + "reboot";

@@ -108,7 +108,7 @@
         <activity
             android:name=".ui.OffLineCheckDevVersionActivity"
             android:label="@string/title_activity_off_line_check_dev_version"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>

@@ -41,4 +41,15 @@
         android:textColor="@color/mFontWhite"
         android:textSize="24sp"
         android:visibility="gone"/>
+
+    <Button
+        android:id="@+id/btn_offLineList_downloadApp1845"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:background="@color/mBlue"
+        android:text="@string/download__APP1845"
+        android:textColor="@color/mFontWhite"
+        android:textSize="24sp"
+        android:visibility="gone"/>
 </LinearLayout>

@@ -35,33 +35,6 @@ public class HuoQuWIFIMiMaActivity extends AppCompatActivity implements Consts {
     ClipData myClip;
     String WIFIMiMa;
     private String myBaseUrl;
-   /* //常量
-    public static final int OK_TEXT = 4;
-    public static final int NO_TEXT = 5;
-*/
-    /* private Handler handler = new Handler() {
-         public void handleMessage(Message msg) {
-             switch (msg.what) {
-                 case OK_TEXT:
- // 在这里可以进行UI操作
-
-                     tv_WIFIMiMa.setText(String.valueOf(msg.obj));
-                     if (SPUtils.contains(HuoQuWIFIMiMaActivity.this, "WIFI密码")) {
-                         SPUtils.remove(HuoQuWIFIMiMaActivity.this, "WIFI密码");
-                     }
-                     SPUtils.put(HuoQuWIFIMiMaActivity.this, "WIFI密码", msg.obj);
-                     L.d("4444444444");
-                     break;
-
-                 case NO_TEXT:
-                     tv_WIFIMiMa.setText("获取失败，请重试！");
-                     L.d("获取失败，请重试！");
-                     break;
-                 default:
-                     break;
-             }
-         }
-     };*/
     private Handler handler = new MyHandler(this);
 
     private static class MyHandler extends Handler {

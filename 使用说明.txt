@@ -1,0 +1,12 @@
+//传送设备IP标记为101
+intent.setFlags(101);
+//"device_ip"为设备IP标识
+intent.putExtra("device_ip", "");
+
+
+//传送设备唯一标识号(modelNumber + serialNumber)标记为 103
+intent.setFlags(103);
+//"display_model_number_add_serial_number"为设备标识号标识
+intent.putExtra("display_model_number_add_serial_number");
+
+//本地保存的"DeviceOffLineNumber.txt"文件为设备识别号

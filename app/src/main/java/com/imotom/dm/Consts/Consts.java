@@ -76,32 +76,11 @@ public interface Consts {
 
     String INTENT_display_model_number_add_serial_number = "display_model_number_add_serial_number";
 
-    /*
-     * SPUtils 中定义的数据类型
-     * -----------------------------------------------------------------------------------------
-     */
-    //本地保存的国科设备名
-    //String SPUTILS_guoKe_device_name = "国科设备名";
-    //本地保存的车机设备名
-    //String SPUTILS_cheJi_device_name = "车机设备名";
-    //本地保存的国科设备序列号
-    //String SPUTILS_guoKeDevice_serial_number = "国科设备序列号";
-    //本地保存的车机设备序列号
-    //String SPUTILS_cheJiDevice_serial_number = "车机设备序列号";
-    //本地保存的国科设备版本号
-    //String SPUTILS_guoKeDevice_version_number = "国科设备版本号";
-    //本地保存的车机设备版本号
-    //String SPUTILS_cheJiDevice_version_number = "车机设备版本号";
 
     /**
      *  设备  设备序列号（暂定）
      * ------------------------------------------------------------------------------------
      */
-    //国科设备序列号
-    //String MT_guoKe_serial_number = "MT1828";
-    //车机设备序列号
-    //String MT_cheJi_serial_number = "MT1845";
-    //String MT_cheJi_4g_serial_number = "MT1845000002";MT1816000008
 
     //国科设备modelNumber（区分不同种类设备）
     String MT_guoKe_model_number = "MT1828";

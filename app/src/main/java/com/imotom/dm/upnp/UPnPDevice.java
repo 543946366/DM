@@ -213,12 +213,12 @@ public class UPnPDevice {
 	String getMyDetailsMsg() {
 		StringBuilder sb = new StringBuilder();
 			sb.append("设备名:").append(getDisplayString()).append("\n");
-			sb.append("别  名:").append(mProperties.get("xml_friendly_name")).append("\n");
+			sb.append("别   名:").append(mProperties.get("xml_friendly_name")).append("\n");
 			sb.append("序列号:").append(mProperties.get("xml_serial_number")).append("\n");
 			//正则表达式获取IP
 			String reg = Consts.REG;
 			String IP = mProperties.get("xml_presentation_URL");
-			sb.append("IP地址:").append(IP.replaceAll(reg, "$1")).append("\n");
+			sb.append("IP地址:").append(IP.replaceAll(reg, "$1"));
 		return sb.toString();
 	}
 }

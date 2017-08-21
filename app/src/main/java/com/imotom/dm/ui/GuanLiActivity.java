@@ -160,93 +160,6 @@ public class GuanLiActivity extends AppCompatActivity implements View.OnClickLis
         String url = myUrl + "get_capability";
         DigestAuthenticationUtil.startDigest(url, logTextHandler, "/get_capability");
 
-        /*new Thread(() -> {
-
-            try {
-                //创建okHttpClient对象
-//创建一个Request  "http://192.168.63.9:8199/get_capability"  正则表达式获取IP，再加端口号处理
-                //String reg = ".*\\/\\/([^\\/\\:]*).*";
-                String myUrl = "http://" + myBaseUrl.replaceAll(reg, "$1") + ":8199/";
-                String url = myUrl + "get_capability";
-                Response response = OkHttpUtils
-                        .post()
-                        .url(url)
-                        .build()
-                        .execute();
-                if (response.code() == 401) {
-                    L.e("下面开始666WWW-Authenticate:" + response.header("WWW-Authenticate"));
-                    Headers responseHeaders = response.headers();
-                    for (int i = 0; i < responseHeaders.size(); i++) {
-                        L.e(responseHeaders.name(i) + ": " + responseHeaders.value(i));
-                    }
-
-                    Map<String, String> maps = getMapByKeyArray(response.header("WWW-Authenticate").split(","));
-
-                    maps.put("username", "admin");
-                    maps.put("nc", "00000002");
-                    maps.put("cnonce", "6d9a4895d16b3021");
-                    maps.put("uri", "/get_capability");
-
-                    *//*
-                     * POST请求要HA2 要修改为 HA2 = MD5Object.encrypt("POST:" + "/get_version");
-                     *//*
-                    maps.put("response", getPOSTResponse(maps));
-
-                    // 开始拼凑Authorization 头信息
-                    //StringBuffer authorizationHaderValue = new StringBuffer();
-                    StringBuilder authorizationHaderValue = new StringBuilder();
-                    authorizationHaderValue
-                            .append("Digest username=\"")
-                            .append(maps.get("username"))
-                            .append("\", ")
-                            .append("realm=\"")
-                            .append(maps.get("realm"))
-                            .append("\", ")
-                            .append("nonce=\"").append(maps.get("nonce"))
-                            .append("\", ").append("uri=\"").append(maps.get("uri"))
-                            .append("\", ").append("algorithm=").append("MD5")
-                            .append(", ").append("response=\"")
-                            .append(maps.get("response")).append("\", ")
-                            .append("opaque=\"").append(maps.get("opaque"))
-                            .append("\", ").append("qop=").append(maps.get("qop"))
-                            .append(", ").append("nc=").append(maps.get("nc"))
-                            .append(", ").append("cnonce=\"")
-                            .append(maps.get("cnonce")).append("\"");
-
-                    System.out.println(authorizationHaderValue.toString());
-
-//创建一个Request
-                    OkHttpUtils
-                            .post()
-                            .url(url)
-                            .addHeader("Authorization",
-                                    authorizationHaderValue.toString())
-                            .build()
-                            .execute(new StringCallback() {
-                                @Override
-                                public void onError(Call call, Exception e, int id) {
-                                }
-
-                                @Override
-                                public void onResponse(String response, int id) {
-
-                                    Message message = new Message();
-                                    message.what = OK_TEXT;
-                                    //因为获取的json格式后问题，需要去除前面的4字节
-                                    message.obj = response.substring(4);
-                                    logTextHandler.sendMessage(message); // 将Message对象发送出去
-                                }
-                            });
-                    // 打印响应码
-                    System.out.println(response.code());
-                }
-
-            } catch (Exception e) {
-                e.printStackTrace();
-
-            }
-
-        }).start();*/
 
     }
 
@@ -289,6 +202,10 @@ public class GuanLiActivity extends AppCompatActivity implements View.OnClickLis
                 break;
 
             case R.id.ll_carDev_guanLi:
+                //本地保存设备IP地址
+                //String reg = ".*\\/\\/([^\\/\\:]*).*";
+                FileUtils.writeTxtToFile(myBaseUrl.replaceAll(REG, "$1"), Environment.getExternalStorageDirectory().getPath() + "/imotom/", "DeviceOffLine.txt");
+
                 Navigation();
                 break;
         }
@@ -313,11 +230,6 @@ public class GuanLiActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void showNavigationErrorDialog() {
-
-        //本地保存设备IP地址
-        //String reg = ".*\\/\\/([^\\/\\:]*).*";
-        FileUtils.writeTxtToFile(myBaseUrl.replaceAll(REG, "$1"), Environment.getExternalStorageDirectory().getPath() + "/imotom/", "DeviceOffLine.txt");
-
         test = "showNavigationErrorDialog";
         final AlertDialog dialog = new AlertDialog.Builder(this).create();
         dialog.setTitle("提示");

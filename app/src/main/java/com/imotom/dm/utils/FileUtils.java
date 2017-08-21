@@ -37,7 +37,8 @@ public class FileUtils {
                 file.createNewFile();
             }
             RandomAccessFile raf = new RandomAccessFile(file, "rwd");
-            raf.seek(file.length());
+            //从哪里开始写内容
+            raf.seek(0);
             raf.write(strContent.getBytes());
             raf.close();
         } catch (Exception e) {
