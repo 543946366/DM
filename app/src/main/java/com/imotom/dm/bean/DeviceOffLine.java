@@ -9,6 +9,8 @@ import org.litepal.crud.DataSupport;
 public class DeviceOffLine extends DataSupport{
     //设备的唯一标识为设备的model number + 序列号
     private String device_model_number_add_serial_number;
+    //设备序列号
+    private String device_serial_number;
     //区分不同种类设备的标识
     private String device_model_number;
     //设备别名
@@ -27,6 +29,14 @@ public class DeviceOffLine extends DataSupport{
     private String device_cheji_stm32ver;
     //车机设备URL
     private String device_url;
+
+    public String getDevice_serial_number() {
+        return device_serial_number;
+    }
+
+    public void setDevice_serial_number(String device_serial_number) {
+        this.device_serial_number = device_serial_number;
+    }
 
     public String getDevice_url() {
         return device_url;

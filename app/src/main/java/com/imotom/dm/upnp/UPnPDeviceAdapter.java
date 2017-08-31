@@ -309,7 +309,7 @@ public class UPnPDeviceAdapter extends RecyclerView.Adapter<UPnPDeviceAdapter.Vi
                         .build();
                 Response response = myOkHttpClient.newCall(request).execute();
                 //if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
-                Logger.e("311:" + response.code() + "------------" + response.message());
+                Logger.e(response.code() + "------------" + response.message());
                 if (response.code() == 401) {
                     Logger.e("header:" + response.header("WWW-Authenticate"));
                     String authorizationHaderValue = DigestAuthenticationUtil.startDigestGet(response.header("WWW-Authenticate"), myUerName, myPassword, "/");

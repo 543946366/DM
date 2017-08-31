@@ -26,7 +26,7 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.imotom.dm.Consts.Consts;
 import com.imotom.dm.adapter.UPnPDeviceOffLineAdapter;
 import com.imotom.dm.bean.DeviceOffLine;
-import com.imotom.dm.ui.OffLineListActivity;
+import com.imotom.dm.ui.NewOffLineListActivity;
 import com.imotom.dm.upnp.UPnPDeviceAdapter;
 import com.imotom.dm.upnp.UPnPDeviceFinder;
 import com.imotom.dm.utils.PasswordHelp;
@@ -206,7 +206,7 @@ public class MainActivity extends AppCompatActivity
         uPnPDeviceOffLineAdapter.setOnItemClickLitener(new UPnPDeviceOffLineAdapter.OnItemClickLitener() {
             @Override
             public void onItemClick(View view, int position) {
-                if(deviceOffLineList.get(position).getDevice_model_number().equals(MT_guoKe_model_number)) {
+               /* if(deviceOffLineList.get(position).getDevice_model_number().equals(MT_guoKe_model_number)) {
                     startActivity(new Intent(MainActivity.this, OffLineListActivity.class)
                             .setFlags(1828)
                             .putExtra(INTENT_display_model_number_add_serial_number, deviceOffLineList.get(position).getDevice_model_number_add_serial_number()));
@@ -216,7 +216,9 @@ public class MainActivity extends AppCompatActivity
                             .putExtra(INTENT_display_model_number_add_serial_number, deviceOffLineList.get(position).getDevice_model_number_add_serial_number()));
 
                 }
-
+*/
+                startActivity(new Intent(MainActivity.this, NewOffLineListActivity.class)
+                            .putExtra(INTENT_display_model_number_add_serial_number, deviceOffLineList.get(position).getDevice_model_number_add_serial_number()));
             }
 
             @Override
