@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.imotom.dm.ui.NewGuanLiActivity"
+    tools:showIn="@layout/activity_new_guan_li"
+    >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="30dp"
+            >
+            <android.support.v7.widget.CardView
+                android:id="@+id/cv_new_guanLi_devInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                app:cardCornerRadius="4dp"
+                android:visibility="visible"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingBottom="20dp"
+                    android:paddingTop="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginBottom="16dp"
+                        android:text="设备版本"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/tv_new_guanLi_dev_info"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:textColor="@android:color/black"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tv_new_guanLi_dev_newVersionInfo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:textColor="@android:color/black"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/cv_new_guanLi_wifiPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                app:cardCornerRadius="4dp"
+                android:visibility="visible"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginBottom="16dp"
+                        android:text="该设备的WiFi密码"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/tv_new_guanLi_show_password"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginBottom="16dp"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp" />
+
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/cv_new_guanLi_change_password"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:foreground="?attr/selectableItemBackground"
+                        app:cardBackgroundColor="@color/mBlue"
+                        app:cardCornerRadius="6dp"
+                        android:layout_marginBottom="16dp"
+                        >
+
+                        <TextView
+                            android:layout_width="@dimen/bule_button_width"
+                            android:layout_height="@dimen/bule_button_height"
+                            android:gravity="center"
+                            android:text="修改密码"
+                            android:textColor="@color/mFontWhite" />
+                    </android.support.v7.widget.CardView>
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="4dp"
+                android:layout_marginBottom="30dp"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingBottom="20dp"
+                    android:paddingTop="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginBottom="16dp"
+                        android:text="该设备支持的APP"
+                        android:textSize="18sp" />
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/rv_newGuanLi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        >
+
+                    </android.support.v7.widget.RecyclerView>
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/cv_new_guanLi_dev_support_app_check"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        app:cardBackgroundColor="@color/mBlue"
+                        app:cardCornerRadius="6dp"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:layout_marginBottom="16dp"
+                        android:visibility="gone"
+                        >
+
+                        <TextView
+                            android:id="@+id/tv_new_guanLi_dev_support_app_check"
+                            android:layout_width="@dimen/bule_button_width"
+                            android:layout_height="@dimen/bule_button_height"
+                            android:text="点击查看"
+                            android:textColor="@color/mFontWhite"
+                            android:gravity="center"
+                            />
+                    </android.support.v7.widget.CardView>
+
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/cv_new_guanLi_dev_support_app_check_test"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        app:cardBackgroundColor="@color/mBlue"
+                        app:cardCornerRadius="6dp"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:visibility="gone"
+                        >
+
+                        <TextView
+                            android:id="@+id/tv_new_guanLi_dev_support_app_check_test"
+                            android:layout_width="@dimen/bule_button_width"
+                            android:layout_height="@dimen/bule_button_height"
+                            android:text="点击查看"
+                            android:textColor="@color/mFontWhite"
+                            android:gravity="center"
+                            />
+                    </android.support.v7.widget.CardView>
+
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+            </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

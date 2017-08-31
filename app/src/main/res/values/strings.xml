@@ -33,8 +33,8 @@
 
     <string name="navigation">Navigation</string>
     <string name="nothing">nothing</string>
-    <string name="please_enter_the_username">请输入账号</string>
-    <string name="please_enter_the_password">请输入密码</string>
+    <string name="please_enter_the_username">输入管理账户</string>
+    <string name="please_enter_the_password">输入密码</string>
     <string name="remember_login">记住登录</string>
     <string name="go_back">返回</string>
     <string name="login">登录</string>
@@ -50,8 +50,8 @@
     <string name="detect_the_new_version">检测新版本中…</string>
     <string name="download_the_firmware">下载固件</string>
     <string name="upgrade">升级</string>
-    <string name="set_the_new_password">设置新密码</string>
-    <string name="confirm_the_new_password">确认新密码</string>
+    <string name="set_the_new_password">输入新密码</string>
+    <string name="confirm_the_new_password">请再次输入新密码</string>
     <string name="confirm">确  认</string>
     <string name="username">用户名</string>
     <string name="setting">设置</string>
@@ -75,5 +75,8 @@
     <string name="title_activity_off_line_check_dev_version">OffLineCheckDevVersionActivity</string>
     <string name="dev_server">设备服务</string>
     <string name="dev_zhiChiDeAPP">设备支持的APP</string>
+    <string name="title_activity_new_guan_li">NewGuanLiActivity</string>
+    <string name="title_activity_download_app">APP下载</string>
+    <string name="title_activity_new_off_line_list">NewOffLineListActivity</string>
 
 </resources>

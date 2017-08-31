@@ -9,6 +9,7 @@ import com.franmontiel.persistentcookiejar.ClearableCookieJar;
 import com.franmontiel.persistentcookiejar.PersistentCookieJar;
 import com.franmontiel.persistentcookiejar.cache.SetCookieCache;
 import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor;
+import com.liulishuo.filedownloader.FileDownloader;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
 import com.zhy.http.okhttp.OkHttpUtils;
@@ -55,5 +56,8 @@ public class MyApplication extends Application{
                 .build();
         OkHttpUtils.initClient(okHttpClient);
         //以上均为OKHttp需要
+
+        //初始化下载器
+        FileDownloader.setup(getApplicationContext());
     }
 }

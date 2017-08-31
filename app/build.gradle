@@ -41,6 +41,8 @@ dependencies {
     //rxjava
     //okhttp3使用工具
     //测试Junit
+    
+
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support:cardview-v7:25.3.1'
     compile 'com.android.support:recyclerview-v7:25.3.1'
@@ -55,11 +57,13 @@ dependencies {
     compile 'com.zhy:okhttputils:2.6.2'
     compile 'com.google.code.gson:gson:2.8.0'
     compile 'com.github.hotchemi:permissionsdispatcher:2.4.0'
-    compile 'org.litepal.android:core:1.5.1'
+    compile 'org.litepal.android:core:1.6.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.afollestad.material-dialogs:core:0.9.4.5'
     compile 'com.afollestad.material-dialogs:commons:0.9.4.5'
     compile 'com.orhanobut:logger:2.1.1'
+    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.22'
+    compile 'com.liulishuo.filedownloader:library:1.6.4'
     testCompile 'junit:junit:4.12'
     androidTestCompile 'com.jayway.android.robotium:robotium-solo:5.6.3'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'

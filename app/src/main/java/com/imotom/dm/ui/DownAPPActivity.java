@@ -197,7 +197,7 @@ public class DownAPPActivity extends AppCompatActivity implements View.OnClickLi
     /**
      *重点在这里
      */
-    public void openFile(File var0, Context var1) {
+    private void openFile(File var0, Context var1) {
         Intent var2 = new Intent();
         var2.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         var2.setAction(Intent.ACTION_VIEW);
@@ -215,7 +215,7 @@ public class DownAPPActivity extends AppCompatActivity implements View.OnClickLi
             Toast.makeText(var1, "没有找到打开此类文件的程序", Toast.LENGTH_SHORT).show();
         }
     }
-    public String getMIMEType(File var0) {
+    private String getMIMEType(File var0) {
         String var1;
         String var2 = var0.getName();
         String var3 = var2.substring(var2.lastIndexOf(".") + 1, var2.length()).toLowerCase();

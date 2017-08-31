@@ -13,6 +13,12 @@ public class DeviceOffLine extends DataSupport{
     private String device_model_number;
     //设备别名
     private String device_friendly_name;
+    //设备硬件号
+    private String device_hwid;
+    //设备MAc地址
+    private String device_Mac;
+    //设备软件版本
+    private String device_swid;
     //设备国科设备当前版本名
     private String device_guoke_version_number;
     //车机设备系统文件版本号
@@ -76,5 +82,30 @@ public class DeviceOffLine extends DataSupport{
 
     public void setDevice_friendly_name(String device_friendly_name) {
         this.device_friendly_name = device_friendly_name;
+    }
+
+
+    public String getDevice_hwid() {
+        return device_hwid;
+    }
+
+    public void setDevice_hwid(String device_hwid) {
+        this.device_hwid = device_hwid;
+    }
+
+    public String getDevice_Mac() {
+        return device_Mac;
+    }
+
+    public void setDevice_Mac(String device_Mac) {
+        this.device_Mac = device_Mac;
+    }
+
+    public String getDevice_swid() {
+        return device_swid;
+    }
+
+    public void setDevice_swid(String device_swid) {
+        this.device_swid = device_swid;
     }
 }

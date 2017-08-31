@@ -16,7 +16,7 @@ import android.widget.Toast;
 import com.google.gson.GsonBuilder;
 import com.imotom.dm.Consts.Consts;
 import com.imotom.dm.R;
-import com.imotom.dm.bean.CapabilityBean;
+import com.imotom.dm.bean.CapabilityJson;
 import com.imotom.dm.utils.DigestAuthenticationUtil;
 import com.imotom.dm.utils.FileUtils;
 import com.orhanobut.logger.Logger;
@@ -44,14 +44,9 @@ public class GuanLiActivity extends AppCompatActivity implements View.OnClickLis
     String displayFriendlyName;
     private String displaySerialNumber;
     private String displayModelNumber;
-    /*//正则表达式获取网址IP
-    private String reg = REG;*/
 
-    static CapabilityBean capabilityBean;
+    static CapabilityJson capabilityJson;
 
-    /*//常量
-    public static final int OK_TEXT = 4;
-    public static final int NO_TEXT = 5;*/
     private Handler logTextHandler = new MyHandler(this);
 
     private static class MyHandler extends Handler {
@@ -72,8 +67,8 @@ public class GuanLiActivity extends AppCompatActivity implements View.OnClickLis
                     try {
                         String fuWuList = "";
 
-                        capabilityBean = new GsonBuilder().create().fromJson(String.valueOf(msg.obj.toString().substring(4)), CapabilityBean.class);
-                        for (String t : capabilityBean.getCapability()) {
+                        capabilityJson = new GsonBuilder().create().fromJson(String.valueOf(msg.obj.toString().substring(4)), CapabilityJson.class);
+                        for (String t : capabilityJson.getCapability()) {
                             Log.d("TAG", t);
                             fuWuList = fuWuList.concat(t);
                         }
@@ -159,7 +154,6 @@ public class GuanLiActivity extends AppCompatActivity implements View.OnClickLis
         String myUrl = "http://" + myBaseUrl.replaceAll(REG, "$1") + ":8199/";
         String url = myUrl + "get_capability";
         DigestAuthenticationUtil.startDigest(url, logTextHandler, "/get_capability");
-
 
     }
 

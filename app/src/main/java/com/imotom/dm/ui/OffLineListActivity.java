@@ -30,7 +30,7 @@ public class OffLineListActivity extends AppCompatActivity {
     @BindView(R.id.btn_offLineList_downloadApp1845)
     Button btn_app1845;
 
-    String display_model_number_add_serial_number;
+    private String display_model_number_add_serial_number;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,7 +98,7 @@ public class OffLineListActivity extends AppCompatActivity {
 
         try {
             Intent intent = this.getPackageManager().getLaunchIntentForPackage("com.imotom.location");
-            //传送设备ip并标记 101
+            //传送设备唯一识别码并标记 103
             intent.setFlags(103);
             intent.putExtra(INTENT_display_model_number_add_serial_number,display_model_number_add_serial_number);
             Logger.d(display_model_number_add_serial_number);

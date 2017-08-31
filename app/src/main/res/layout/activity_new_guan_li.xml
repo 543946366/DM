@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.imotom.dm.ui.DengLuActivity"
+    tools:context="com.imotom.dm.ui.NewGuanLiActivity"
     android:fitsSystemWindows="true"
     >
 
@@ -14,6 +14,7 @@
         android:theme="@style/AppTheme.AppBarOverlay"
         android:fitsSystemWindows="true"
         >
+
         <android.support.design.widget.CollapsingToolbarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -39,7 +40,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/title_activity_deng_lu"
+                    android:text="@string/title_activity_main"
                     android:textColor="@color/mFontWhite"
                     android:textSize="20sp"
                     />
@@ -49,8 +50,6 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include
-        android:id="@+id/content_deng_lu"
-        layout="@layout/content_deng_lu" />
+    <include layout="@layout/content_new_guan_li" />
 
 </android.support.design.widget.CoordinatorLayout>

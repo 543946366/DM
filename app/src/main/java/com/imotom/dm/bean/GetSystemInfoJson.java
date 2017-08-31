@@ -1,9 +1,9 @@
-package com.imotom.dm.Consts;
+package com.imotom.dm.bean;
 /*
  * Created by ZhiPeng Huang on 2017-06-06.
  */
 
-public class GetSystemInfoBean {
+public class GetSystemInfoJson {
 
     /**
      * sn : MT1845000003

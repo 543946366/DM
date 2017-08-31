@@ -39,6 +39,10 @@ public interface Consts {
      */
     String EXTRA_PERCENT = "com.imotom.intent.extra.PERCENT";
     /**
+     * Extra：文件下载到的进度的百分比文本
+     */
+    String EXTRA_PERCENT_TEXT = "com.imotom.intent.extra.PERCENT_TExT";
+    /**
      * Extra：文件下载失败的信息
      */
     String EXTRA_DOWNLOAD_ERROR_TEXT = "com.imotom.intent.extra.DOWNLOAD_ERROR_TEXT";
@@ -60,6 +64,8 @@ public interface Consts {
     String URL_inquire_cheJi_dev_update_doc = "http://120.27.94.20:10080/vendor/imotom/MT1845/upgrade.txt";
     //国科APP下载网址
     String URL_downloadGuoKeAPPurl = "http://shouji.360tpcdn.com/170208/c876925ccfa83020f6a8bb4703b93a02/zxc.com.gkdvr_21.apk";
+    //查询设备支持app的基本路径
+    String URL_check_dev_supportAPP_baseURL = "http://120.27.94.20:10080/vendor/imotom/";
 
     /**
      * intent中携带的数据
@@ -75,7 +81,19 @@ public interface Consts {
     String INTENT_display_model_number = "display_model_number";
 
     String INTENT_display_model_number_add_serial_number = "display_model_number_add_serial_number";
+    //app下载地址
+    String INTENT_download_app_URL = "intent_download_app_url";
+    //下载的APP名
+    String INTENT_download_app_name = "intent_download_app_name";
+    //下载的app包名
+    String INTENT_download_app_package = "intent_download_app_package";
 
+    /**
+     * 设备制造商  根据制造商是否显示在线设备
+     * ———————————————————————————————————————————————————————————————————————————————————————————————————————————
+     */
+    String Manufacturer_Imotom = "Imotom";
+    String Manufacturer_Jiahua = "Jiahua";
 
     /**
      *  设备  设备序列号（暂定）

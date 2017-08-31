@@ -35,7 +35,7 @@ import android.widget.TextView;
 import com.imotom.dm.Consts.Consts;
 import com.imotom.dm.R;
 import com.imotom.dm.ui.DengLuActivity;
-import com.imotom.dm.ui.GuanLiActivity;
+import com.imotom.dm.ui.NewGuanLiActivity;
 import com.imotom.dm.utils.DigestAuthenticationUtil;
 import com.imotom.dm.utils.PasswordHelp;
 import com.orhanobut.logger.Logger;
@@ -122,20 +122,12 @@ public class UPnPDeviceAdapter extends RecyclerView.Adapter<UPnPDeviceAdapter.Vi
         final ViewHolder viewHolder = new ViewHolder(view);
         if (viewHolder.ll_upnp_dev_item != null) {
             viewHolder.ll_upnp_dev_item.setOnClickListener(v -> {
-                int position = viewHolder.getAdapterPosition();
+
                 /*if (mListener != null) {
                     mListener.onClick(mItems.get(position), position);
                     notifyItemChanged(position);
                 }*/
-                UPnPDevice upnpDev = mItems.get(position);
 
-                myURL = upnpDev.getPresentationURL();
-                //myURL = "http://192.168.63.9:8099";
-                displayFriendlyName = upnpDev.getScrubbedFriendlyName();
-                displaySerialNumber = upnpDev.getSerialNumber();
-                displayModelNumber = upnpDev.getModelNumber();
-
-                Log.d("TAG", upnpDev.getRawXml() + "-----------------" + upnpDev.getServer());
 
                 //TODO
                 //showDeviceXinxiDialog(upnpDev);
@@ -148,7 +140,18 @@ public class UPnPDeviceAdapter extends RecyclerView.Adapter<UPnPDeviceAdapter.Vi
         }
 
         if(viewHolder.tv_item_upnp_device_guanLi != null){
-            viewHolder.tv_item_upnp_device_guanLi.setOnClickListener(v -> dianJiGuanLi());
+
+            viewHolder.tv_item_upnp_device_guanLi.setOnClickListener(v -> {
+                int position = viewHolder.getAdapterPosition();
+                UPnPDevice upnpDev = mItems.get(position);
+
+                myURL = upnpDev.getPresentationURL();
+                //myURL = "http://192.168.63.9:8099";
+                displayFriendlyName = upnpDev.getScrubbedFriendlyName();
+                displaySerialNumber = upnpDev.getSerialNumber();
+                displayModelNumber = upnpDev.getModelNumber();
+                Log.d("TAG", upnpDev.getRawXml() + "-----------------" + upnpDev.getServer());
+                dianJiGuanLi();});
         }
         return viewHolder;
     }
@@ -297,6 +300,7 @@ public class UPnPDeviceAdapter extends RecyclerView.Adapter<UPnPDeviceAdapter.Vi
 
     private void newHttpDigest() {
         final String url = myURL;
+        Logger.d(myURL);
         new Thread(() -> {
 
             try {
@@ -328,7 +332,7 @@ public class UPnPDeviceAdapter extends RecyclerView.Adapter<UPnPDeviceAdapter.Vi
                     Intent intent = new Intent();
                     if (response.code() == 200) {
                         //mTv.setText("登录成功");
-                        intent = new Intent(myContext, GuanLiActivity.class);
+                        intent = new Intent(myContext, NewGuanLiActivity.class);
                         intent.putExtra(Consts.INTENT_deviceURL, myURL);
                         intent.putExtra(Consts.INTENT_display_friendly_name, displayFriendlyName);
                         intent.putExtra(Consts.INTENT_display_serial_number, displaySerialNumber);

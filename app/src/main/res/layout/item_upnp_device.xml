@@ -70,8 +70,8 @@
             android:id="@+id/tv_item_upnp_device_devInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
             android:visibility="gone"
+            android:layout_marginLeft="20dp"
             />
 
         <TextView

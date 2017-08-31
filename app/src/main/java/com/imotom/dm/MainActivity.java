@@ -281,8 +281,7 @@ public class MainActivity extends AppCompatActivity
                     try{
                     //搜索到的Upnp设备含有车机或者国科设备序列号才显示在线
                     //if (device.getSerialNumber().contains(MT_cheJi_serial_number) || device.getSerialNumber().contains(MT_guoKe_serial_number)) {
-                    if(!device.getModelNumber().isEmpty() && device.getModelNumber() != null) {
-                        if (device.getModelNumber().equals(MT_cheJi_model_number) || device.getModelNumber().equals(MT_guoKe_model_number)) {
+                        if(device.getManufacturer().equals(Manufacturer_Imotom) || device.getManufacturer().equals(Manufacturer_Jiahua)) {
                             mAdapter.add(device);
                             //offLineAdapter.remove(deviceOffLine);
                             //如果upnp设备在线，则移除离线设备的显示
@@ -309,7 +308,6 @@ public class MainActivity extends AppCompatActivity
                                 }
                             }
                         }
-                    }
                     } catch (Exception e) {
                         // Ignore errors
                         Logger.d("Error: " + e.getMessage());
@@ -365,6 +363,8 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_quXiaoDengLu) {
             PasswordHelp.savePassword(MainActivity.this, "nullCaoNiMa", "null", true);
+        } else if(id == R.id.nav_ruJianBanBen) {
+
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

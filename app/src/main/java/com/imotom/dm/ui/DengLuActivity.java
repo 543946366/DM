@@ -37,9 +37,6 @@ public class DengLuActivity extends AppCompatActivity implements View.OnClickLis
     //输入密码文本框
     @BindView(R.id.et_dengLu_password)
     EditText et_password;
-    //返回上一级界面按钮
-    @BindView(R.id.btn_dengLu_fanHuiButton)
-    Button btn_fanHui;
     //登录按钮
     @BindView(R.id.btn_dengLu_dengLuButton)
     Button btn_dengLu;
@@ -94,7 +91,7 @@ public class DengLuActivity extends AppCompatActivity implements View.OnClickLis
                     //登录成功跳转到管理界面
                     activity.tv_tiShi.setVisibility(View.INVISIBLE);
 
-                    Intent intent = new Intent(activity, GuanLiActivity.class);
+                    Intent intent = new Intent(activity, NewGuanLiActivity.class);
                     //携带设备URL
                     intent.putExtra(Consts.INTENT_deviceURL, activity.myBaseUrl);
                     intent.putExtra(Consts.INTENT_display_friendly_name, activity.displayFriendlyName);
@@ -139,7 +136,6 @@ public class DengLuActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void initView() {
-        btn_fanHui.setOnClickListener(this);
         btn_dengLu.setOnClickListener(this);
 
     }
@@ -152,9 +148,6 @@ public class DengLuActivity extends AppCompatActivity implements View.OnClickLis
                 dengLu();
                 break;
 
-            case R.id.btn_dengLu_fanHuiButton:
-                finish();
-                break;
         }
     }
 

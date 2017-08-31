@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 import com.google.gson.GsonBuilder;
 import com.imotom.dm.Consts.Consts;
-import com.imotom.dm.Consts.GetSystemInfoBean;
+import com.imotom.dm.bean.GetSystemInfoJson;
 import com.imotom.dm.R;
 import com.imotom.dm.bean.DeviceOffLine;
 import com.imotom.dm.utils.DigestAuthenticationUtil;
@@ -38,7 +38,7 @@ public class CheckDeviceInfoActivity extends AppCompatActivity implements Consts
     @BindView(R.id.tv_TXZBXX_stm32)
     TextView tv_TXZBXX_stm32;
 
-    private GetSystemInfoBean getSystemInfoBean;
+    private GetSystemInfoJson getSystemInfoJson;
 
     //设备序列号
     private String displaySerialNumber;
@@ -63,21 +63,21 @@ public class CheckDeviceInfoActivity extends AppCompatActivity implements Consts
                     // 在这里可以进行UI操作
                     // new DownloadTask().execute();
                     try {
-                        activity.getSystemInfoBean = new GsonBuilder().create().fromJson(String.valueOf(msg.obj.toString().substring(4)), GetSystemInfoBean.class);
-                        if (!activity.getSystemInfoBean.getSn().isEmpty()) {
-                            activity.tv_TXZBXX_sn.setText(activity.getSystemInfoBean.getSn());
+                        activity.getSystemInfoJson = new GsonBuilder().create().fromJson(String.valueOf(msg.obj.toString().substring(4)), GetSystemInfoJson.class);
+                        if (!activity.getSystemInfoJson.getSn().isEmpty()) {
+                            activity.tv_TXZBXX_sn.setText(activity.getSystemInfoJson.getSn());
                         }
-                        if (!activity.getSystemInfoBean.getHwid().isEmpty()) {
-                            activity.tv_TXZBXX_hwid.setText(activity.getSystemInfoBean.getHwid());
+                        if (!activity.getSystemInfoJson.getHwid().isEmpty()) {
+                            activity.tv_TXZBXX_hwid.setText(activity.getSystemInfoJson.getHwid());
                         }
-                        if (!activity.getSystemInfoBean.getSwid().isEmpty()) {
-                            activity.tv_TXZBXX_swid.setText(activity.getSystemInfoBean.getSwid());
+                        if (!activity.getSystemInfoJson.getSwid().isEmpty()) {
+                            activity.tv_TXZBXX_swid.setText(activity.getSystemInfoJson.getSwid());
                         }
-                        if (!activity.getSystemInfoBean.getMac().isEmpty()) {
-                            activity.tv_TXZBXX_mac.setText(activity.getSystemInfoBean.getMac());
+                        if (!activity.getSystemInfoJson.getMac().isEmpty()) {
+                            activity.tv_TXZBXX_mac.setText(activity.getSystemInfoJson.getMac());
                         }
-                        if (!activity.getSystemInfoBean.getStm32_ver().isEmpty()) {
-                            activity.tv_TXZBXX_stm32.setText(activity.getSystemInfoBean.getStm32_ver());
+                        if (!activity.getSystemInfoJson.getStm32_ver().isEmpty()) {
+                            activity.tv_TXZBXX_stm32.setText(activity.getSystemInfoJson.getStm32_ver());
                         }
 
                     } catch (Exception e) {

@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.imotom.dm.Consts.Consts;
@@ -32,6 +33,8 @@ public class XiuGaiMiMaActivity extends AppCompatActivity implements Consts {
     EditText et_newPassword_XiuGaiMiMa;
     @BindView(R.id.et_again_XiuGaiMiMa)
     EditText et_again_XiuGaiMiMa;
+    @BindView(R.id.tv_xiuGaiMiMa_hint)
+    TextView tvXiuGaiMiMaHint;
 
     private String miMa_text;
     private String myBaseUrl;
@@ -64,7 +67,8 @@ public class XiuGaiMiMaActivity extends AppCompatActivity implements Consts {
                     break;
 
                 case NO_TEXT:
-                    Toast.makeText(activity, "修改失败！请重试！", Toast.LENGTH_SHORT).show();
+                    activity.tvXiuGaiMiMaHint.setText("修改失败！请重试！");
+                    //Toast.makeText(activity, "修改失败！请重试！", Toast.LENGTH_SHORT).show();
                     break;
                 default:
                     break;
@@ -81,7 +85,7 @@ public class XiuGaiMiMaActivity extends AppCompatActivity implements Consts {
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
 
-        if(getSupportActionBar()!=null) {
+        if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
         init();
@@ -99,22 +103,26 @@ public class XiuGaiMiMaActivity extends AppCompatActivity implements Consts {
     private void initView() {
         btn_ok.setOnClickListener(view -> {
             if (et_again_XiuGaiMiMa.getText().toString().isEmpty() || et_newPassword_XiuGaiMiMa.getText().toString().isEmpty()) {
-                Toast.makeText(this, "输入的新密码不能为空！", Toast.LENGTH_SHORT).show();
+                tvXiuGaiMiMaHint.setText("输入的新密码不能为空！");
+                //Toast.makeText(this, "输入的新密码不能为空！", Toast.LENGTH_SHORT).show();
             } else if (et_newPassword_XiuGaiMiMa.getText().toString().equals("12345678") || et_again_XiuGaiMiMa.getText().toString().equals("12345678")) {
-                Toast.makeText(this, "出于安全考虑，新密码不能为初始密码12345678！", Toast.LENGTH_SHORT).show();
+                tvXiuGaiMiMaHint.setText("出于安全考虑，新密码不能为初始密码12345678！");
+                //Toast.makeText(this, "出于安全考虑，新密码不能为初始密码12345678！", Toast.LENGTH_SHORT).show();
                 et_newPassword_XiuGaiMiMa.setText("");
                 et_again_XiuGaiMiMa.setText("");
             } else if (et_newPassword_XiuGaiMiMa.getText().toString().equals(et_again_XiuGaiMiMa.getText().toString())) {
                 // wifi密码限制长度至少8位数以上
-                if(et_again_XiuGaiMiMa.getText().toString().length() >= 8){
+                if (et_again_XiuGaiMiMa.getText().toString().length() >= 8) {
                     miMa_text = et_again_XiuGaiMiMa.getText().toString();
                     showMyDialog();
-                }else{
-                    Toast.makeText(this, "新密码少于8位数，请重新设置！", Toast.LENGTH_LONG).show();
+                } else {
+                    tvXiuGaiMiMaHint.setText("新密码少于8位数，请重新设置！");
+                    //Toast.makeText(this, "新密码少于8位数，请重新设置！", Toast.LENGTH_LONG).show();
                 }
 
             } else {
-                Toast.makeText(this, "两次密码输入不一样，请重新输入！", Toast.LENGTH_SHORT).show();
+                tvXiuGaiMiMaHint.setText("两次密码输入不一样，请重新输入！");
+                //Toast.makeText(this, "两次密码输入不一样，请重新输入！", Toast.LENGTH_SHORT).show();
                 et_newPassword_XiuGaiMiMa.setText("");
                 et_again_XiuGaiMiMa.setText("");
             }
@@ -126,7 +134,7 @@ public class XiuGaiMiMaActivity extends AppCompatActivity implements Consts {
         AlertDialog dialog = new AlertDialog.Builder(this).create();
         dialog.setTitle("提示");
         dialog.setMessage("修改WIFI密码会使当前网络断开，需使用新密码连接WIFI！");
-        dialog.setButton(AlertDialog.BUTTON_POSITIVE,"确定",(d,i)->{
+        dialog.setButton(AlertDialog.BUTTON_POSITIVE, "确定", (d, i) -> {
 
             if (SPUtils.contains(XiuGaiMiMaActivity.this, "WIFI密码")) {
                 SPUtils.remove(XiuGaiMiMaActivity.this, "WIFI密码");
@@ -135,7 +143,8 @@ public class XiuGaiMiMaActivity extends AppCompatActivity implements Consts {
             SPUtils.put(XiuGaiMiMaActivity.this, "WIFI密码", miMa_text);
             changeWIFIPassword();
         });
-        dialog.setButton(AlertDialog.BUTTON_NEGATIVE,"取消",(d,i) -> {});
+        dialog.setButton(AlertDialog.BUTTON_NEGATIVE, "取消", (d, i) -> {
+        });
         dialog.show();
     }
 
@@ -144,13 +153,13 @@ public class XiuGaiMiMaActivity extends AppCompatActivity implements Consts {
      */
     private void changeWIFIPassword() {
         //"http://192.168.63.9:8199/wifi_pwd_update"
-        DigestAuthenticationUtil.startDigestPost(myBaseUrl+"wifi_pwd_update",handler,"/wifi_pwd_update","admin","admin","wifi_password",miMa_text);
+        DigestAuthenticationUtil.startDigestPost(myBaseUrl + "wifi_pwd_update", handler, "/wifi_pwd_update", "admin", "admin", "wifi_password", miMa_text);
 
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case android.R.id.home:
                 finish();
                 return true;

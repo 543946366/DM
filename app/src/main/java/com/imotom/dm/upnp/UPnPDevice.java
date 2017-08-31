@@ -136,6 +136,9 @@ public class UPnPDevice {
 		return name;
 	}
 
+	public String getManufacturer(){
+		return mProperties.get("xml_manufacturer");
+	}
 	////////////////////////////////////////////////////////////////////////////////
 	// UPnP Response Parsing
 	////////////////////////////////////////////////////////////////////////////////
@@ -206,6 +209,7 @@ public class UPnPDevice {
 		mProperties.put("xml_presentation_URL", xPath.compile("//presentationURL").evaluate(doc));
 		mProperties.put("xml_model_name", xPath.compile("//modelName").evaluate(doc));
 		mProperties.put("xml_model_number", xPath.compile("//modelNumber").evaluate(doc));
+		mProperties.put("xml_manufacturer", xPath.compile("//manufacturer").evaluate(doc));
 
 	}
 
