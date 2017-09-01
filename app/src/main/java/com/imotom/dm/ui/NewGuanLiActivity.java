@@ -32,7 +32,7 @@ public class NewGuanLiActivity extends AppCompatActivity implements Consts {
     public
     TextView tvNewGuanLiShowPassword;
     @BindView(R.id.tv_new_guanLi_dev_newVersionInfo)
-    TextView tvNewGuanLiDevVersion;
+    public TextView tvNewGuanLiDevVersion;
     @BindView(R.id.cv_new_guanLi_wifiPassword)
     public
     CardView cvNewGuanLiWifiPassword;
@@ -163,7 +163,7 @@ public class NewGuanLiActivity extends AppCompatActivity implements Consts {
         displaySerialNumber = intent.getStringExtra(Consts.INTENT_display_serial_number);
         displayModelNumber = intent.getStringExtra(Consts.INTENT_display_model_number);
 
-        getSystemInfoHandler = new GetSystemInfoHandler(this, displayFriendlyName, displayModelNumber, displaySerialNumber);
+        getSystemInfoHandler = new GetSystemInfoHandler(this, displayFriendlyName, displayModelNumber, displaySerialNumber, deviceIP);
         getCapabilityHandler = new GetCapabilityHandler(this, displayModelNumber, displaySerialNumber ,deviceIP);
 
         Logger.e(myBaseUrl + "===" + displayFriendlyName + "==" + displaySerialNumber + "==" + displayModelNumber);

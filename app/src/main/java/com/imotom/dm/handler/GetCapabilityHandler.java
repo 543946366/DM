@@ -67,18 +67,17 @@ public class GetCapabilityHandler extends Handler implements Consts{
                     for (String t : capabilityJson.getCapability()) {
                         Log.d("TAG", t);
                         fuWuList = fuWuList.concat(t);
+
                     }
 
                     Logger.d(fuWuList);
                     if (fuWuList.contains("get_version")) {
                         activity.cvNewGuanLiDevInfo.setVisibility(View.VISIBLE);
-                        Logger.d("=========");
-                        DigestAuthenticationUtil.startDigest("http://192.168.43.1:8199/get_system_info", activity.getSystemInfoHandler, "/get_system_info");
-                        Logger.d("=========");
+                        DigestAuthenticationUtil.startDigest("http://" + deviceIP + ":8199/get_system_info", activity.getSystemInfoHandler, "/get_system_info");
                     }
                     if (fuWuList.contains("wifi_pwd_retrieve")) {
                         activity.cvNewGuanLiWifiPassword.setVisibility(View.VISIBLE);
-                        new Handler().postDelayed(() -> DigestAuthenticationUtil.startDigest("http://192.168.43.1:8199/wifi_pwd_retrieve",activity.getWifiPasswordHandler,"/wifi_pwd_retrieve"),1000);
+                        new Handler().postDelayed(() -> DigestAuthenticationUtil.startDigest("http://" + deviceIP + ":8199/wifi_pwd_retrieve",activity.getWifiPasswordHandler,"/wifi_pwd_retrieve"),1000);
                         }
                     if (fuWuList.contains("wifi_pwd_update")) {
                         activity.cvNewGuanLiChangePassword.setVisibility(View.VISIBLE);
@@ -86,7 +85,9 @@ public class GetCapabilityHandler extends Handler implements Consts{
                     if (fuWuList.contains("update_time")) {
                         //TODO 国科设备专用的服务，如果有则提供修改设备时间界面
                     }
-                    checkSupportApp(activity);
+                    new Handler().postDelayed(() -> checkSupportApp(activity),1000);
+
+
                 } catch (Exception e) {
                     //e.printStackTrace();
                 }
@@ -122,35 +123,6 @@ public class GetCapabilityHandler extends Handler implements Consts{
 
             @Override
             public void onResponse(String response, int id) {
-               /* String re = "{\n" +
-                        "    \"support_app\": [\n" +
-                        "        {\n" +
-                        "            \"name\": \"GKDVR\",\n" +
-                        "            \"android_download_url\": \"http://shouji.360tpcdn.com/170208/c876925ccfa83020f6a8bb4703b93a02/zxc.com.gkdvr_21.apk\",\n" +
-                        "            \"package\": \"zxc.com.gkdvr\",\n" +
-                        "            \"ios_download_url\": \"https://itunes.apple.com/cn/app/gkdvr/id1127795700?mt=8\",\n" +
-                        "            \"url_schema\": \"QQ41e4efec://\"\n" +
-                        "        },\n" +
-                        "{\n" +
-                        "\"name\":\"aaa\"\n" +
-                        "},\n" +
-                        "{\n" +
-                        "\"name\":\"bbb\"\n" +
-                        "},\n" +
-                        "{\n" +
-                        "\"name\":\"ccc\"\n" +
-                        "},\n" +
-                        "{\n" +
-                        "\"name\":\"ddd\"\n" +
-                        "},\n" +
-                        "{\n" +
-                        "\"name\":\"eee\"\n" +
-                        "},\n" +
-                        "{\n" +
-                        "\"name\":\"fff\"\n" +
-                        "}\n" +
-                        "    ]\n" +
-                        "}";*/
 
                 getSupportAppJson = new GsonBuilder().create().fromJson(response, GetSupportAppJson.class);
                 List<GetSupportAppJson.SupportAppBean> supportAppBeanList = getSupportAppJson.getSupport_app();
