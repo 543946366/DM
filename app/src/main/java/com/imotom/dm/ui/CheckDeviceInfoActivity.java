@@ -63,7 +63,16 @@ public class CheckDeviceInfoActivity extends AppCompatActivity implements Consts
                     // 在这里可以进行UI操作
                     // new DownloadTask().execute();
                     try {
-                        activity.getSystemInfoJson = new GsonBuilder().create().fromJson(String.valueOf(msg.obj.toString().substring(4)), GetSystemInfoJson.class);
+
+                        int jsonSize = msg.obj.toString().indexOf("{");
+                        String jsonContent ;
+                        if(jsonSize == 0){
+                            jsonContent = msg.obj.toString();
+                        }else {
+                            jsonContent = msg.obj.toString().substring(jsonSize);
+                        }
+
+                        activity.getSystemInfoJson = new GsonBuilder().create().fromJson(jsonContent, GetSystemInfoJson.class);
                         if (!activity.getSystemInfoJson.getSn().isEmpty()) {
                             activity.tv_TXZBXX_sn.setText(activity.getSystemInfoJson.getSn());
                         }

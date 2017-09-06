@@ -50,17 +50,17 @@
                         android:id="@+id/tv_new_guanLi_dev_info"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
+                        android:layout_marginLeft="20dp"
                         android:textColor="@android:color/black"
-                        android:textSize="14sp" />
+                        android:textSize="12sp" />
 
                     <TextView
                         android:id="@+id/tv_new_guanLi_dev_newVersionInfo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
+                        android:layout_marginLeft="20dp"
                         android:textColor="@android:color/black"
-                        android:textSize="14sp" />
+                        android:textSize="12sp" />
                 </LinearLayout>
             </android.support.v7.widget.CardView>
 

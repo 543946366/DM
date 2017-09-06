@@ -110,15 +110,10 @@ public class OffLineListActivity extends AppCompatActivity {
     }
 
     private void showApp1845ErrorDialog() {
-
-        //本地保存设备IP地址
-        //String reg = ".*\\/\\/([^\\/\\:]*).*";
-
         final AlertDialog dialog = new AlertDialog.Builder(this).create();
         dialog.setTitle("提示");
         dialog.setMessage("APP1845启动失败，或者还没下载，请重新下载后再试！");
         dialog.setButton(AlertDialog.BUTTON_POSITIVE, "进入下载",
-                //TODO
                 (dialogInterface, i) -> startActivity(new Intent(this, DownloadNavigationAPPActivity.class)));
         dialog.setButton(AlertDialog.BUTTON_NEGATIVE, "取消", (dialogInterface, i) -> {
         });

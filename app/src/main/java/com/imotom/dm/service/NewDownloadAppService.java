@@ -22,7 +22,7 @@ import com.orhanobut.logger.Logger;
 
 import java.math.BigDecimal;
 
-public class NewDownloadService extends Service implements Consts {
+public class NewDownloadAppService extends Service implements Consts {
 
     private long Progress;
 
@@ -31,19 +31,11 @@ public class NewDownloadService extends Service implements Consts {
      */
     private BroadcastReceiver receiver;
     /**
-     * 提交下载进度的线程的循环条件
-     */
-    private boolean isRunning;
-    /**
      * 当前是否为下载状态
      */
     private boolean isDownload;
 
     private BaseDownloadTask baseDownloadTask;
-    /**
-     * 下载软件网址
-     */
-    private String downloadAppURL;
     private String downloadAppName;
 
     @Override
@@ -120,7 +112,10 @@ public class NewDownloadService extends Service implements Consts {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         downloadAppName = intent.getStringExtra(INTENT_download_app_name);
-        downloadAppURL = intent.getStringExtra(INTENT_download_app_URL);
+        /*
+      下载软件网址
+     */
+        String downloadAppURL = intent.getStringExtra(INTENT_download_app_URL);
         Logger.d(downloadAppName + " ===========" + downloadAppURL);
         baseDownloadTask = FileDownloader.getImpl().create(downloadAppURL)
                 .setPath(Environment.getExternalStorageDirectory().getPath() + "/imotom/" + downloadAppName + ".apk")
@@ -154,7 +149,7 @@ public class NewDownloadService extends Service implements Consts {
                         sendBroadcast(new Intent().setAction(ACTION_DOWNLOAD_SUCCEED));
                         Logger.d("下载完成");
 
-                        InstallAPKUtil.installAPK(Environment.getExternalStorageDirectory().getPath() + "/imotom",downloadAppName,NewDownloadService.this);
+                        InstallAPKUtil.installAPK(Environment.getExternalStorageDirectory().getPath() + "/imotom",downloadAppName,NewDownloadAppService.this);
                     }
 
                     @Override

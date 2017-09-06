@@ -40,7 +40,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/title_activity_main"
+                    android:text="@string/title_activity_new_guan_li"
                     android:textColor="@color/mFontWhite"
                     android:textSize="20sp"
                     />

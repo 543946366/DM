@@ -15,7 +15,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/ll_upnp_dev_item"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <LinearLayout
@@ -61,17 +61,19 @@
                 android:id="@+id/iv_item_upnp_device_down"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@android:drawable/arrow_down_float"
+                app:srcCompat="@mipmap/arrow_down_float"
                 android:layout_margin="10dp"
                 />
+
         </LinearLayout>
 
         <TextView
             android:id="@+id/tv_item_upnp_device_devInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="gone"
             android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:visibility="gone"
             />
 
         <TextView

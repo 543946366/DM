@@ -123,7 +123,7 @@
             android:label="@string/title_activity_download_app"
             android:theme="@style/AppTheme.NoActionBar" />
 
-        <service android:name=".service.NewDownloadService" />
+        <service android:name=".service.NewDownloadAppService" />
 
         <activity
             android:name=".ui.NewOffLineListActivity"

@@ -54,66 +54,6 @@ public class NewGuanLiActivity extends AppCompatActivity implements Consts {
 
     //设备URL及设备名和设备序列号
     private String myBaseUrl;
-    private String displayFriendlyName;
-    private String displaySerialNumber;
-    private String displayModelNumber;
-
-    /*private Handler logTextHandler = new MyHandler(this);
-
-    private class MyHandler extends Handler {
-        private final WeakReference<NewGuanLiActivity> myActivity;
-
-        private MyHandler(NewGuanLiActivity myActivity) {
-            this.myActivity = new WeakReference<>(myActivity);
-        }
-
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            NewGuanLiActivity activity = myActivity.get();
-            switch (msg.what) {
-                case OK_TEXT:
-                    // 在这里可以进行UI操作
-                    // new DownloadTask().execute();
-                    try {
-                        String fuWuList = "";
-
-                        capabilityJson = new GsonBuilder().create().fromJson(String.valueOf(msg.obj.toString().substring(4)), CapabilityJson.class);
-                        for (String t : capabilityJson.getCapability()) {
-                            Log.d("TAG", t);
-                            fuWuList = fuWuList.concat(t);
-                        }
-
-                        Logger.d(fuWuList);
-                        if (fuWuList.contains("get_version")) {
-                            activity.cvNewGuanLiDevInfo.setVisibility(View.VISIBLE);
-                            Logger.d("=========");
-                            DigestAuthenticationUtil.startDigest("http://192.168.43.1:8199/get_system_info", getSystemInfoHandler, "/get_system_info");
-                            Logger.d("=========");
-                        }
-                        if (fuWuList.contains("wifi_pwd_retrieve")) {
-                            activity.cvNewGuanLiWifiPassword.setVisibility(View.VISIBLE);
-                        }
-                        if (fuWuList.contains("wifi_pwd_update")) {
-                            activity.cvNewGuanLiChangePassword.setVisibility(View.VISIBLE);
-                        }
-                        if (fuWuList.contains("update_time")) {
-                            //TODO 国科设备专用的服务，如果有则提供修改设备时间界面
-                        }
-
-                    } catch (Exception e) {
-                        //e.printStackTrace();
-                    }
-                    break;
-
-                case NO_TEXT:
-                    break;
-
-                default:
-                    break;
-            }
-        }
-    }*/
 
     public GetSystemInfoHandler getSystemInfoHandler;
     private GetCapabilityHandler getCapabilityHandler;
@@ -159,12 +99,12 @@ public class NewGuanLiActivity extends AppCompatActivity implements Consts {
         Intent intent = getIntent();
         myBaseUrl = intent.getStringExtra(Consts.INTENT_deviceURL);
         String deviceIP = myBaseUrl.replaceAll(REG, "$1");
-        displayFriendlyName = intent.getStringExtra(Consts.INTENT_display_friendly_name);
-        displaySerialNumber = intent.getStringExtra(Consts.INTENT_display_serial_number);
-        displayModelNumber = intent.getStringExtra(Consts.INTENT_display_model_number);
+        String displayFriendlyName = intent.getStringExtra(Consts.INTENT_display_friendly_name);
+        String displaySerialNumber = intent.getStringExtra(Consts.INTENT_display_serial_number);
+        String displayModelNumber = intent.getStringExtra(Consts.INTENT_display_model_number);
 
         getSystemInfoHandler = new GetSystemInfoHandler(this, displayFriendlyName, displayModelNumber, displaySerialNumber, deviceIP);
-        getCapabilityHandler = new GetCapabilityHandler(this, displayModelNumber, displaySerialNumber ,deviceIP);
+        getCapabilityHandler = new GetCapabilityHandler(this, displayModelNumber, displaySerialNumber,deviceIP);
 
         Logger.e(myBaseUrl + "===" + displayFriendlyName + "==" + displaySerialNumber + "==" + displayModelNumber);
 

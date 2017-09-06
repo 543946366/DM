@@ -91,7 +91,7 @@
                     android:background="@android:color/background_light"
                     android:ems="10"
                     android:hint="@string/confirm_the_new_password"
-                    android:inputType="textPassword"
+                    android:inputType="textPersonName"
                     android:textColor="@android:color/background_dark"
                     android:textColorHint="@color/mGray"
                     android:textSize="18sp" />

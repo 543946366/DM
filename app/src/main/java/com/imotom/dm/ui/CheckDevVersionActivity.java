@@ -92,7 +92,6 @@ public class CheckDevVersionActivity extends AppCompatActivity implements Consts
                         SPUtils.put(activity, "升级版本号", "已是最新");
                     } else {
                         activity.tv_log.setText("当前版本为:" + activity.dangQianBanBenName + "\n" + "有新版本：" + activity.guJianName + "\n" + "请尽快联系4S店或者厂家升级！");
-                        //TODO
                         //activity.btn_shengJi.setVisibility(View.VISIBLE);
 
                         //本地保存下个固件升级版本号

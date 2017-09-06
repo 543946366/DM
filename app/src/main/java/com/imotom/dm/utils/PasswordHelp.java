@@ -20,17 +20,17 @@ import javax.crypto.SecretKey;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.DESedeKeySpec;
 
-/**
- * Created by Peng on 2017-04-22.
+/*
+ * Created by ZhiPeng Huang on 2017-04-22.
  */
 
 public class PasswordHelp {
 
     /**
      * 保存账号密码
-     * @param context
-     * @param number
-     * @param password
+     * @param context 上下文
+     * @param number 账号
+     * @param password 密码
      * @param isRemember 是否记住密码
      */
     public static void savePassword(Context context, String number, String password, boolean isRemember) {
@@ -53,7 +53,7 @@ public class PasswordHelp {
         editor.putString("number", number);
         editor.putString("password", password);
         editor.putBoolean("isRemember", isRemember);
-        editor.commit();
+        editor.apply();
     }
 
     //读取账号密码
@@ -77,7 +77,7 @@ public class PasswordHelp {
     }
 
     //保存key
-    public static boolean saveKey(SecretKey key, String path) {
+    private static boolean saveKey(SecretKey key, String path) {
         try {
             FileOutputStream fileOutputStream1 = new FileOutputStream(path);
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(
@@ -93,7 +93,7 @@ public class PasswordHelp {
     }
 
     //读取key
-    public static SecretKey readKey(String path) {
+    private static SecretKey readKey(String path) {
         SecretKey key = null;
         try {
             ObjectInputStream objectInputStream = new ObjectInputStream(
@@ -132,7 +132,7 @@ public class PasswordHelp {
     /**
      * 数据加解密3DES所需要的Key
      */
-    public static SecretKey get3DESKey() {
+    private static SecretKey get3DESKey() {
         try {
             // 生成key
             KeyGenerator keyGenerator = KeyGenerator.getInstance("DESede");
@@ -143,9 +143,8 @@ public class PasswordHelp {
             // 转化key
             DESedeKeySpec deSedeKeySpec = new DESedeKeySpec(bytesKey);
             SecretKeyFactory factory = SecretKeyFactory.getInstance("DESede");
-            SecretKey generateSecret = factory.generateSecret(deSedeKeySpec);
 
-            return generateSecret;
+            return factory.generateSecret(deSedeKeySpec);
         } catch (Exception e) {
             e.printStackTrace();
             Log.d("测试", e.toString());
@@ -161,9 +160,8 @@ public class PasswordHelp {
             // 加密
             Cipher cipher = Cipher.getInstance("DESede/ECB/PKCS5Padding");
             cipher.init(Cipher.ENCRYPT_MODE, generateSecret);
-            byte[] result = cipher.doFinal(str.getBytes("utf-8"));
 
-            return result;
+            return cipher.doFinal(str.getBytes("utf-8"));
         } catch (Exception e) {
             System.out.println("加密出错：" + e.getMessage());
         }

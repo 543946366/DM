@@ -106,7 +106,7 @@ public class XiuGaiMiMaActivity extends AppCompatActivity implements Consts {
                 tvXiuGaiMiMaHint.setText("输入的新密码不能为空！");
                 //Toast.makeText(this, "输入的新密码不能为空！", Toast.LENGTH_SHORT).show();
             } else if (et_newPassword_XiuGaiMiMa.getText().toString().equals("12345678") || et_again_XiuGaiMiMa.getText().toString().equals("12345678")) {
-                tvXiuGaiMiMaHint.setText("出于安全考虑，新密码不能为初始密码12345678！");
+                tvXiuGaiMiMaHint.setText(String.valueOf("出于安全考虑，新密码不能为初始密码12345678！"));
                 //Toast.makeText(this, "出于安全考虑，新密码不能为初始密码12345678！", Toast.LENGTH_SHORT).show();
                 et_newPassword_XiuGaiMiMa.setText("");
                 et_again_XiuGaiMiMa.setText("");

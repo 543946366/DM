@@ -17,12 +17,11 @@ import android.widget.Toast;
 
 import com.imotom.dm.Consts.Consts;
 import com.imotom.dm.R;
-import com.imotom.dm.service.NewDownloadService;
+import com.imotom.dm.service.NewDownloadAppService;
 import com.imotom.dm.utils.InstallAPKUtil;
 import com.orhanobut.logger.Logger;
 
 import java.io.File;
-import java.math.BigDecimal;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -77,7 +76,7 @@ public class DownloadAppActivity extends AppCompatActivity implements Consts{
 
 
         // 激活Service
-        Intent intent = new Intent(this, NewDownloadService.class)
+        Intent intent = new Intent(this, NewDownloadAppService.class)
                 .putExtra(INTENT_download_app_URL, downloadAppURL)
                 .putExtra(INTENT_download_app_name, downloadAppName);
         startService(intent);
@@ -182,24 +181,11 @@ public class DownloadAppActivity extends AppCompatActivity implements Consts{
 
         if(!isDownload){
             // 停止Service
-            Intent intentStop = new Intent(DownloadAppActivity.this, NewDownloadService.class);
+            Intent intentStop = new Intent(DownloadAppActivity.this, NewDownloadAppService.class);
             stopService(intentStop);
         }
         super.onDestroy();
 
-    }
-
-    private static String bytes2kb(long bytes) {
-        BigDecimal filesize = new BigDecimal(bytes);
-        BigDecimal megabyte = new BigDecimal(1024 * 1024);
-        float returnValue = filesize.divide(megabyte, 2, BigDecimal.ROUND_UP)
-                .floatValue();
-        if (returnValue > 1)
-            return (returnValue + "MB");
-        BigDecimal kilobyte = new BigDecimal(1024);
-        returnValue = filesize.divide(kilobyte, 2, BigDecimal.ROUND_UP)
-                .floatValue();
-        return (returnValue + "KB");
     }
 
     /**
@@ -228,7 +214,7 @@ public class DownloadAppActivity extends AppCompatActivity implements Consts{
                 /*// 取消注册广播接收者
                 unregisterReceiver(receiver);*/
                 // 停止Service
-                Intent intentStop = new Intent(DownloadAppActivity.this, NewDownloadService.class);
+                Intent intentStop = new Intent(DownloadAppActivity.this, NewDownloadAppService.class);
                 stopService(intentStop);
                 tvDownloadAppClick.setText("开始下载");
 

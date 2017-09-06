@@ -16,7 +16,7 @@ import android.widget.Toast;
 import com.google.gson.GsonBuilder;
 import com.imotom.dm.Consts.Consts;
 import com.imotom.dm.R;
-import com.imotom.dm.bean.CapabilityJson;
+import com.imotom.dm.bean.GetCapabilityJson;
 import com.imotom.dm.utils.DigestAuthenticationUtil;
 import com.imotom.dm.utils.FileUtils;
 import com.orhanobut.logger.Logger;
@@ -45,7 +45,7 @@ public class GuanLiActivity extends AppCompatActivity implements View.OnClickLis
     private String displaySerialNumber;
     private String displayModelNumber;
 
-    static CapabilityJson capabilityJson;
+    static GetCapabilityJson getCapabilityJson;
 
     private Handler logTextHandler = new MyHandler(this);
 
@@ -67,8 +67,16 @@ public class GuanLiActivity extends AppCompatActivity implements View.OnClickLis
                     try {
                         String fuWuList = "";
 
-                        capabilityJson = new GsonBuilder().create().fromJson(String.valueOf(msg.obj.toString().substring(4)), CapabilityJson.class);
-                        for (String t : capabilityJson.getCapability()) {
+                        int jsonSize = msg.obj.toString().indexOf("{");
+                        String jsonContent ;
+                        if(jsonSize == 0){
+                            jsonContent = msg.obj.toString();
+                        }else {
+                            jsonContent = msg.obj.toString().substring(jsonSize);
+                        }
+
+                        getCapabilityJson = new GsonBuilder().create().fromJson(jsonContent, GetCapabilityJson.class);
+                        for (String t : getCapabilityJson.getCapability()) {
                             Log.d("TAG", t);
                             fuWuList = fuWuList.concat(t);
                         }

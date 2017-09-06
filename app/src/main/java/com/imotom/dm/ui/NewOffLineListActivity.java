@@ -10,11 +10,9 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.google.gson.GsonBuilder;
 import com.imotom.dm.R;
 import com.imotom.dm.adapter.SupportAppAdapter;
@@ -96,7 +94,6 @@ public class NewOffLineListActivity extends AppCompatActivity {
                 if (deviceOffLine.getDevice_model_number().equals(MT_guoKe_model_number)){
                     guoKeRuanJianBaoShengJiChaXun(deviceOffLine.getDevice_swid());
                 }else if (deviceOffLine.getDevice_model_number().equals(MT_cheJi_model_number)) {
-                    //TODO
                     cheJiRuanJianBaoChaXun();
                 }
             }
@@ -143,13 +140,10 @@ public class NewOffLineListActivity extends AppCompatActivity {
                 GetSupportAppJson getSupportAppJson = new GsonBuilder().create().fromJson(response, GetSupportAppJson.class);
                 List<GetSupportAppJson.SupportAppBean> supportAppBeanList = getSupportAppJson.getSupport_app();
                 SupportAppAdapter adapter = new SupportAppAdapter(supportAppBeanList);
-                adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                        Logger.e(supportAppBeanList.get(position).getName());
+                adapter.setOnItemClickListener((adapter1, view, position) -> {
+                    Logger.e(supportAppBeanList.get(position).getName());
 
-                        clickApp(supportAppBeanList.get(position));
-                    }
+                    clickApp(supportAppBeanList.get(position));
                 });
                 rvNewOffLineList.setLayoutManager(new LinearLayoutManager(NewOffLineListActivity.this));
                 rvNewOffLineList.setAdapter(adapter);

@@ -16,7 +16,6 @@
 
 package com.imotom.dm.upnp;
 
-import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
@@ -123,14 +122,6 @@ public class UPnPDeviceAdapter extends RecyclerView.Adapter<UPnPDeviceAdapter.Vi
         if (viewHolder.ll_upnp_dev_item != null) {
             viewHolder.ll_upnp_dev_item.setOnClickListener(v -> {
 
-                /*if (mListener != null) {
-                    mListener.onClick(mItems.get(position), position);
-                    notifyItemChanged(position);
-                }*/
-
-
-                //TODO
-                //showDeviceXinxiDialog(upnpDev);
                 if(viewHolder.tv_item_upnp_device_devInfo.getVisibility() == View.GONE) {
                     viewHolder.tv_item_upnp_device_devInfo.setVisibility(View.VISIBLE);
                 }else {
@@ -159,9 +150,9 @@ public class UPnPDeviceAdapter extends RecyclerView.Adapter<UPnPDeviceAdapter.Vi
     /**
      * 弹窗显示设备信息
      *
-     * @param deviceDisplay UPnP发现的设备
+     *
      */
-    private void showDeviceXinxiDialog(UPnPDevice deviceDisplay) {
+    /*private void showDeviceXinxiDialog(UPnPDevice deviceDisplay) {
         final AlertDialog dialog = new AlertDialog.Builder(myContext).create();
         dialog.setTitle("设备信息");
         dialog.setMessage(deviceDisplay.getMyDetailsMsg());
@@ -171,7 +162,7 @@ public class UPnPDeviceAdapter extends RecyclerView.Adapter<UPnPDeviceAdapter.Vi
                 (dialogInterface, i) -> {
                 });
         dialog.show();
-    }
+    }*/
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {

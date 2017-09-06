@@ -46,9 +46,19 @@ public class GetSystemInfoHandler extends Handler implements Consts{
 
 
                 try {
+                    Logger.e(msg.obj.toString());
                     DeviceOffLine deviceOffLine = new DeviceOffLine();
                     StringBuilder systemInfo = new StringBuilder();
-                    GetSystemInfoJson getSystemInfoJson = new GsonBuilder().create().fromJson(String.valueOf(msg.obj.toString().substring(4)), GetSystemInfoJson.class);
+
+                    int jsonSize = msg.obj.toString().indexOf("{");
+                    String jsonContent ;
+                    if(jsonSize == 0){
+                        jsonContent = msg.obj.toString();
+                    }else {
+                        jsonContent = msg.obj.toString().substring(jsonSize);
+                    }
+
+                    GetSystemInfoJson getSystemInfoJson = new GsonBuilder().create().fromJson(jsonContent, GetSystemInfoJson.class);
                     if (!getSystemInfoJson.getSn().isEmpty()) {
                         systemInfo.append("序列号：").append(getSystemInfoJson.getSn()).append("\n");
                         deviceOffLine.setDevice_serial_number(getSystemInfoJson.getSn());
@@ -70,7 +80,6 @@ public class GetSystemInfoHandler extends Handler implements Consts{
                         if(displayModelNumber.equals(MT_guoKe_model_number)){
                             guoKeRuanJianBaoShengJiChaXun(getSystemInfoJson.getSwid());
                         }else if(displayModelNumber.equals(MT_cheJi_model_number)){
-                            //TODO
                             cheJiRuanJianBaoChaXun();
                         }
 

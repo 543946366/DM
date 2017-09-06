@@ -6,7 +6,7 @@ import java.util.List;
  * Created by ZhiPeng Huang on 2017-02-07.
  */
 
-public class CapabilityJson {
+public class GetCapabilityJson {
     private List<String> capability;
 
     public List<String> getCapability() {
