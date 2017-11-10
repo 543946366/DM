@@ -24,6 +24,7 @@ public class GetSupportAppJson {
          * name : GKDVR
          * android_download_url : http://shouji.360tpcdn.com/170208/c876925ccfa83020f6a8bb4703b93a02/zxc.com.gkdvr_21.apk
          * package : zxc.com.gkdvr
+         * introduction : 应用介绍
          * ios_download_url : https://itunes.apple.com/cn/app/gkdvr/id1127795700?mt=8
          * url_schema : QQ41e4efec://
          */
@@ -32,6 +33,7 @@ public class GetSupportAppJson {
         private String android_download_url;
         @SerializedName("package")
         private String packageX;
+        private String introduction;
         private String ios_download_url;
         private String url_schema;
 
@@ -57,6 +59,14 @@ public class GetSupportAppJson {
 
         public void setPackageX(String packageX) {
             this.packageX = packageX;
+        }
+
+        public String getIntroduction() {
+            return introduction;
+        }
+
+        public void setIntroduction(String introduction) {
+            this.introduction = introduction;
         }
 
         public String getIos_download_url() {

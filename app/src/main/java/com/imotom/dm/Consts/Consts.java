@@ -85,6 +85,8 @@ public interface Consts {
     String INTENT_download_app_URL = "intent_download_app_url";
     //下载的APP名
     String INTENT_download_app_name = "intent_download_app_name";
+    //设备支持app的简介
+    String INTENT_download_app_introduction = "intent_download_app_introduction";
     //下载的app包名
     String INTENT_download_app_package = "intent_download_app_package";
 

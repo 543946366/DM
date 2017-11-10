@@ -100,20 +100,28 @@
         <activity
             android:name=".ui.CheckDeviceInfoActivity"
             android:label="@string/title_activity_tian_xie_zhu_ban_xin_xi"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"
+            />
         <activity
             android:name=".ui.OffLineListActivity"
             android:label="@string/title_activity_off_line_list"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"
+            />
         <activity
             android:name=".ui.OffLineCheckDevVersionActivity"
             android:label="@string/title_activity_off_line_check_dev_version"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"
+            />
         <activity
             android:name=".ui.NewGuanLiActivity"
             android:label="@string/title_activity_new_guan_li"
             android:theme="@style/AppTheme.NoActionBar"
-            tools:targetApi="jelly_bean">
+            tools:targetApi="jelly_bean"
+            android:screenOrientation="portrait"
+            >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.imotom.dm.MainActivity" />
@@ -121,7 +129,9 @@
         <activity
             android:name=".ui.DownloadAppActivity"
             android:label="@string/title_activity_download_app"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"
+            />
 
         <service android:name=".service.NewDownloadAppService" />
 
@@ -129,7 +139,9 @@
             android:name=".ui.NewOffLineListActivity"
             android:label="@string/title_activity_new_off_line_list"
             android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"
+            >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.imotom.dm.MainActivity" />

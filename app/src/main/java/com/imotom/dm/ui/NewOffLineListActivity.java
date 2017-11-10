@@ -34,6 +34,7 @@ import okhttp3.Call;
 import static com.imotom.dm.Consts.Consts.DEVICE_MODEL_NUMBER_ADD_SERIAL_NUMBER;
 import static com.imotom.dm.Consts.Consts.INTENT_display_model_number_add_serial_number;
 import static com.imotom.dm.Consts.Consts.INTENT_download_app_URL;
+import static com.imotom.dm.Consts.Consts.INTENT_download_app_introduction;
 import static com.imotom.dm.Consts.Consts.INTENT_download_app_name;
 import static com.imotom.dm.Consts.Consts.MT_cheJi_model_number;
 import static com.imotom.dm.Consts.Consts.MT_guoKe_model_number;
@@ -167,18 +168,20 @@ public class NewOffLineListActivity extends AppCompatActivity {
             startActivity(intent);
         } catch (Exception e) {
             Toast.makeText(this, "没有安装", Toast.LENGTH_LONG).show();
-            showNavigationErrorDialog(supportAppBean.getAndroid_download_url(),supportAppBean.getName());
+            Logger.e(supportAppBean.getIntroduction());
+            showNavigationErrorDialog(supportAppBean.getAndroid_download_url(), supportAppBean.getName(), supportAppBean.getIntroduction());
         }
     }
 
-    private void showNavigationErrorDialog(String downloadAppURL, String downloadAppName) {
+    private void showNavigationErrorDialog(String downloadAppURL, String downloadAppName, String introduction) {
         final AlertDialog dialog = new AlertDialog.Builder(this).create();
         dialog.setTitle("提示");
-        dialog.setMessage("NavigationAPP启动失败，或者还没下载，请重新下载后再试！");
+        dialog.setMessage(downloadAppName + "启动失败，或者还没下载，请重新下载后再试！");
         dialog.setButton(AlertDialog.BUTTON_POSITIVE, "进入下载",
                 (dialogInterface, i) -> startActivity(new Intent(this, DownloadAppActivity.class)
                         .putExtra(INTENT_download_app_URL,downloadAppURL)
-                        .putExtra(INTENT_download_app_name, downloadAppName)));
+                        .putExtra(INTENT_download_app_name, downloadAppName)
+                        .putExtra(INTENT_download_app_introduction,introduction)));
         dialog.setButton(AlertDialog.BUTTON_NEGATIVE, "取消", (dialogInterface, i) -> {
         });
         dialog.show();

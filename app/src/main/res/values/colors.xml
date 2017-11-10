@@ -2,13 +2,14 @@
 <resources>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#36ACDE</color>
+    <color name="colorAccent">#60c8ff</color>
 
-    <color name="mBlue">#36ACDE</color>
+    <color name="mBlue">#60c8ff</color>
     <color name="mFontWhite">#ffffff</color>
     <color name="mFontBlack">#393939</color>
     <color name="mGray">#cccccc</color>
     <color name="mGray_guanLi">#eaeaea</color>
     <color name="mFontGray_guanLi">#595959</color>
+    <color name="septal_line">#e4e4e4</color>
 
 </resources>

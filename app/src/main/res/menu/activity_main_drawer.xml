@@ -5,12 +5,12 @@
 
         <item
             android:id="@+id/nav_quXiaoDengLu"
-            android:icon="@android:drawable/ic_delete"
+            android:icon="@mipmap/ic_cancel"
             android:title="@string/cancel_automatic_login" />
 
         <item
             android:id="@+id/nav_ruJianBanBen"
-            android:icon="@android:drawable/ic_dialog_info"
+            android:icon="@mipmap/ic_version_info"
             android:title="@string/software_version" />
     </group>
 

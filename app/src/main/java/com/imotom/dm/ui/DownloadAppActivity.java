@@ -71,6 +71,7 @@ public class DownloadAppActivity extends AppCompatActivity implements Consts{
         String downloadAppURL = getIntent().getStringExtra(INTENT_download_app_URL);
         downloadAppName = getIntent().getStringExtra(INTENT_download_app_name);
         //downloadAppPackage = getIntent().getStringExtra(INTENT_download_app_package);
+        tvDownloadAppHint.setText(String.valueOf("\u3000\u3000" + getIntent().getStringExtra(INTENT_download_app_introduction)));
         tvDownloadAppName.setText(downloadAppName);
         pbDownloadApp.setMax(100);
 

@@ -254,7 +254,7 @@ public class MainActivity extends AppCompatActivity
                     try {
                         device.downloadSpecs();
                     } catch (Exception e) {
-                        // Ignore errors
+                        // Ignore errors。
                         Logger.d("Error: " + e);
                     }
                     return true;
