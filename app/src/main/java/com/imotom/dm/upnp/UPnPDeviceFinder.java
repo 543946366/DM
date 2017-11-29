@@ -29,8 +29,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.regex.Pattern;
 
-import rx.Observable;
-import rx.Subscriber;
+import io.reactivex.Observable;
 
 /**
  * Based on:
@@ -40,11 +39,15 @@ public class UPnPDeviceFinder {
 
 	private static String TAG = UPnPDeviceFinder.class.getName();
 
+	//多点播送地址
 	public static final String MULTICAST_ADDRESS = "239.255.255.250";
 
+	//端口
 	public static final int PORT = 1900;
 
+	//最大回复时间
 	public static final int MAX_REPLY_TIME = 60;
+	//超时
 	public static final int MSG_TIMEOUT = MAX_REPLY_TIME * 1000 + 1000;
 
 	private InetAddress mInetDeviceAdr;
@@ -68,7 +71,36 @@ public class UPnPDeviceFinder {
 	}
 
 	public Observable<UPnPDevice> observe() {
-		return Observable.create(new Observable.OnSubscribe<UPnPDevice>() {
+		return Observable.create(subscriber -> {
+            if(mSock == null){
+                subscriber.onError(new Exception("socket is null"));
+                return;
+            }
+
+            try {
+                // Broadcast SSDP search messages
+                mSock.sendMulticastMsg();
+
+                // Listen to responses from network until the socket timeout
+                while (true) {
+                    Log.e(TAG, "等待设备响应！！！");
+                    DatagramPacket dp = mSock.receiveMulticastMsg();
+                    String receivedString = new String(dp.getData());
+                    receivedString = receivedString.substring(0, dp.getLength());
+                    Log.e(TAG, "找到设备: " + receivedString);
+                    UPnPDevice device = UPnPDevice.getInstance(receivedString);
+                    if (device != null) {
+                        subscriber.onNext(device);
+                    }
+                }
+            }catch (IOException e){
+                //sock timeout will get us out of the loop
+                Log.e(TAG, "time out");
+                mSock.close();
+                subscriber.onComplete();
+            }
+        });
+		/*return Observable.create(new Observable.OnSubscribe<UPnPDevice>() {
 			@Override
 			public void call(Subscriber<? super UPnPDevice> subscriber) {
 				if (mSock == null) {
@@ -100,7 +132,7 @@ public class UPnPDeviceFinder {
 					subscriber.onCompleted();
 				}
 			}
-		});
+		});*/
 
 	}
 
@@ -117,6 +149,7 @@ public class UPnPDeviceFinder {
 		UPnPSocket(InetAddress deviceIp) throws IOException {
 			Log.e(TAG, "UPnPSocket");
 
+			//组
 			mMulticastGroup = new InetSocketAddress(MULTICAST_ADDRESS, PORT);
 			mMultiSocket = new MulticastSocket(new InetSocketAddress(deviceIp, 0));
 
@@ -155,7 +188,7 @@ public class UPnPDeviceFinder {
 	// Utils
 	////////////////////////////////////////////////////////////////////////////////
 
-	public static final String NEWLINE = "\r\n";
+	private static final String NEWLINE = "\r\n";
 
 	private static String buildSSDPSearchString() {
 		StringBuilder content = new StringBuilder();
@@ -202,7 +235,7 @@ public class UPnPDeviceFinder {
 				}
 			}
 		}
-		catch (Exception ex) {
+		catch (Exception ignored) {
 		} // for now eat exceptions
 		return null;
 	}
@@ -212,7 +245,7 @@ public class UPnPDeviceFinder {
 	private static final Pattern IPV4_PATTERN =
 		Pattern.compile("^(25[0-5]|2[0-4]\\d|[0-1]?\\d?\\d)(\\.(25[0-5]|2[0-4]\\d|[0-1]?\\d?\\d)){3}$");
 
-	private static final boolean isIPv4Address(final String input) {
+	private static boolean isIPv4Address(final String input) {
 		return IPV4_PATTERN.matcher(input).matches();
 	}
 }

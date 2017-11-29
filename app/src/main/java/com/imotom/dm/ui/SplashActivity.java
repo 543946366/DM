@@ -8,7 +8,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.WindowManager;
 
-import com.imotom.dm.MainActivity;
+import com.imotom.dm.upnp.MainActivity;
 import com.imotom.dm.R;
 
 import permissions.dispatcher.NeedsPermission;

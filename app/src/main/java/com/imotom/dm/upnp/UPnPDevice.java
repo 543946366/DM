@@ -19,6 +19,7 @@ package com.imotom.dm.upnp;
 import android.text.TextUtils;
 
 import com.imotom.dm.Consts.Consts;
+import com.orhanobut.logger.Logger;
 
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
@@ -144,6 +145,7 @@ public class UPnPDevice {
 	////////////////////////////////////////////////////////////////////////////////
 
 	static UPnPDevice getInstance(String raw) {
+		Logger.i(raw);
 		HashMap<String, String> parsed = parseRaw(raw);
 		try {
 			UPnPDevice device = new UPnPDevice();
@@ -179,17 +181,19 @@ public class UPnPDevice {
 	private transient final OkHttpClient mClient = new OkHttpClient();
 
 	public void downloadSpecs() throws Exception {
+		Logger.d("ddddddddddddd");
 		Request request = new Request.Builder()
 			.url(mLocation)
 			.build();
 
 		Response response = mClient.newCall(request).execute();
 		if (!response.isSuccessful()) {
+			Logger.d("no OK");
 			throw new IOException("Unexpected code " + response);
 		}
 
 		mRawXml = response.body().string();
-
+		Logger.d(mRawXml);
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 		DocumentBuilder db = dbf.newDocumentBuilder();
 		InputSource source = new InputSource(new StringReader(mRawXml));

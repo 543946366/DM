@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.imotom.dm">
 
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -21,31 +22,31 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
-            android:name=".MainActivity"
+            android:name=".upnp.MainActivity"
             android:label="@string/title_activity_main"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ui.DengLuActivity"
             android:label="@string/title_activity_deng_lu"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".upnp.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             tools:targetApi="jelly_bean">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.imotom.dm.MainActivity" />
+                android:value="com.imotom.dm.upnp.MainActivity" />
         </activity>
         <activity
             android:name=".ui.GuanLiActivity"
             android:label="@string/title_activity_guan_li"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".upnp.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             tools:targetApi="jelly_bean">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.imotom.dm.MainActivity" />
+                android:value="com.imotom.dm.upnp.MainActivity" />
         </activity>
         <activity
             android:name=".ui.DownloadNavigationAPPActivity"
@@ -124,7 +125,7 @@
             >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.imotom.dm.MainActivity" />
+                android:value="com.imotom.dm.upnp.MainActivity" />
         </activity>
         <activity
             android:name=".ui.DownloadAppActivity"
@@ -138,13 +139,13 @@
         <activity
             android:name=".ui.NewOffLineListActivity"
             android:label="@string/title_activity_new_off_line_list"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".upnp.MainActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait"
             >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.imotom.dm.MainActivity" />
+                android:value="com.imotom.dm.upnp.MainActivity" />
         </activity>
     </application>
 

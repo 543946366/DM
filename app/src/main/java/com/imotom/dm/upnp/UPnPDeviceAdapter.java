@@ -303,7 +303,8 @@ public class UPnPDeviceAdapter extends RecyclerView.Adapter<UPnPDeviceAdapter.Vi
                 Logger.e(response.code() + "------------" + response.message());
                 if (response.code() == 401) {
                     Logger.e("header:" + response.header("WWW-Authenticate"));
-                    String authorizationHaderValue = DigestAuthenticationUtil.startDigestGet(response.header("WWW-Authenticate"), myUerName, myPassword, "/");
+                    String authorizationHaderValue = DigestAuthenticationUtil
+                            .startDigestGet(response.header("WWW-Authenticate"), myUerName, myPassword, "/");
 
                     Logger.e("value:" + authorizationHaderValue);
 
@@ -316,11 +317,13 @@ public class UPnPDeviceAdapter extends RecyclerView.Adapter<UPnPDeviceAdapter.Vi
                             .build();
                     response = myOkHttpClient.newCall(request).execute();
                     // 打印响应码
+                    Logger.d(response.code());
+                    Logger.v("");
                     System.out.println(response.code());
                     System.out.println("错误：" + response.message());
 
 
-                    Intent intent = new Intent();
+                    Intent intent;
                     if (response.code() == 200) {
                         //mTv.setText("登录成功");
                         intent = new Intent(myContext, NewGuanLiActivity.class);
