@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.imotom.dm.view.SetWifiStaSettingsActivity"
+    tools:showIn="@layout/activity_set_wifi_sta_settings"
+    android:padding="20dp"
+    android:background="@android:color/background_light"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/background_light"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#d2d2d2"
+            android:layout_marginBottom="20dp"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:padding="10dp"
+                android:layout_margin="1dp"
+                android:background="@android:color/background_light"
+                >
+
+                <!--<ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginStart="10dp"
+                    android:contentDescription="@string/nothing"
+                    android:src="@mipmap/pwd_icon" />-->
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:text="SSID："
+                    android:textColor="@color/mFontBlack"
+                    android:textSize="18sp"
+                    />
+
+                <EditText
+                    android:id="@+id/et_setWifiSta_ssid"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/background_light"
+                    android:ems="10"
+                    android:hint="填写热点名称"
+                    android:inputType="textPersonName"
+                    android:textColor="@android:color/background_dark"
+                    android:textColorHint="@color/mGray"
+                    android:textSize="18sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#d2d2d2"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:padding="10dp"
+                android:background="@android:color/background_light"
+                android:layout_margin="1dp"
+                >
+
+                <!--<ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginStart="10dp"
+                    android:contentDescription="@string/nothing"
+                    android:src="@mipmap/pwd_icon" />-->
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:text="密码："
+                    android:textColor="@color/mFontBlack"
+                    android:textSize="18sp"
+                    />
+
+
+                <EditText
+                    android:id="@+id/et_setWifiSta_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/background_light"
+                    android:ems="10"
+                    android:hint="填写热点密码"
+                    android:inputType="textPersonName"
+                    android:textColor="@android:color/background_dark"
+                    android:textColorHint="@color/mGray"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_setWifiSta_hint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="16sp" />
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="4dp"
+        app:cardBackgroundColor="@color/colorAccent"
+        android:foreground="?attr/selectableItemBackground"
+        >
+        <Button
+            android:text="提交修改"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_setWifiSta_ok"
+            android:textColor="@color/mFontWhite"
+            android:textSize="24sp"
+            style="?android:attr/borderlessButtonStyle"
+            />
+    </android.support.v7.widget.CardView>
+</LinearLayout>

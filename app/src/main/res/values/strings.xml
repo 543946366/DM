@@ -15,6 +15,7 @@
     <string name="title_activity_sheng_ji">固件升级</string>
     <string name="title_activity_huo_qu_wifimi_ma">当前WIFI密码</string>
     <string name="title_activity_xiu_gai_mi_ma">修改WIFI密码</string>
+    <string name="title_activity_xiu_gai_sta">修改连接的热点</string>
     <string name="title_activity_down_app">GKDVR下载</string>
     <string name="title_activity_huo_qu">当前WIFI密码</string>
     <string name="title_activity_splash">加载首页</string>

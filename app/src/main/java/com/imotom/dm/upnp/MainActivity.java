@@ -300,7 +300,7 @@ public class MainActivity extends AppCompatActivity
                                 .start();
                     }
 
-                    if(TextUtils.isEmpty(device.getRawXml())){
+                    if (TextUtils.isEmpty(device.getRawXml())) {
                         Logger.e(device.getRawXml());
                         return;
                     }

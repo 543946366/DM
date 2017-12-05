@@ -69,6 +69,11 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+            android:name=".view.SetWifiStaSettingsActivity"
+            android:label="@string/title_activity_xiu_gai_sta"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".ui.DownAPPActivity"
             android:label="@string/title_activity_down_app"
             android:screenOrientation="portrait"
